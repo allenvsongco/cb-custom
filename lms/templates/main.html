@@ -38,7 +38,6 @@ from common.djangoapps.pipeline_mako import render_require_js_path_overrides
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel="stylesheet" href="/css/bootstrap.css" /> -->
-    <link rel="stylesheet" href="${static.url('css/styles.css')}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,6 +55,7 @@ from common.djangoapps.pipeline_mako import render_require_js_path_overrides
       type="text/css"
       href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
+    <link rel="stylesheet" href="${static.url('css/styles.css')}" />
 
 ## Define a couple of helper functions to make life easier when
 ## embedding theme conditionals into templates. All inheriting
@@ -218,7 +218,7 @@ from common.djangoapps.pipeline_mako import render_require_js_path_overrides
 
     <div class="marketing-hero"><%block name="marketing_hero"></%block></div>
 
-    <div class="content-wrapper main-container" id="content" dir="${static.dir_rtl()}">
+    <div id="content" dir="${static.dir_rtl()}">
       ${next.body()}
       <%block name="bodyextra"/>
     </div>
