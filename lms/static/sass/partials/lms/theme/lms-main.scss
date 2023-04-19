@@ -5,6 +5,7 @@ html {
 $primary: #3aa8a1;
 $secondary: #81a74b;
 
+@import 'edx-bootstrap/sass/open-edx/theme';
 @import "pages/homepage.scss";
 
 .bg-light-1 {
