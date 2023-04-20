@@ -6,33 +6,27 @@ from django.core.urlresolvers import reverse
 from six import text_type
 %>
 <%page args="course" expression_filter="h"/>
-<div class="col-12 col-md-6 col-lg-4">
-    <a href="${reverse('about_course', args=[text_type(course.id)])}">
-        <div class="course-item">
-        <div class="category-badge" style="background-color: #387aa6">
-            Information Technology
-        </div>
-        <img
-            height="auto"
-            width="100%"
-            src="${static.url('images/course-placeholder.png')}"
-        />
-        <div class="course-details-container">
-            <div class="d-flex align-items-center">
-            <img
-                class="me-1"
-                height="auto"
-                width="32px"
-                src="${course.course_image_url}"
-            />
-            <h2 class="course-title">${course.display_org_with_default}</h2>
-            </div>
-            <p class="course-description mt-2 pb-3">
-                ${course.display_name}
-            </p>
-            <div class="course-start">Class Starts:</div>
-            <span class="course-start-date">${course.start_datetime_text()}</span>
-        </div>
-        </div>
-    </a>
-</div>
+<article class="course" id="${course.id}" role="region" aria-label="${course.display_name_with_default}">
+  <a href="${reverse('about_course', args=[text_type(course.id)])}">
+    <header class="course-image">
+      <div class="cover-image">
+        <img src="${course.course_image_url}" alt="${course.display_name_with_default} ${course.display_number_with_default}" />
+        <div class="learn-more" aria-hidden=true>${_("LEARN MORE")}</div>
+      </div>
+    </header>
+    <div class="course-info" aria-hidden="true">
+      <h2 class="course-name">
+        <span class="course-organization">${course.display_org_with_default}</span>
+        <span class="course-title">${course.display_name}</span>
+      </h2>
+      <div class="course-date" aria-hidden="true">${course.start_datetime_text()} - ${course.end_datetime_text()}</div>
+    </div>
+    <div class="sr">
+      <ul>
+      <li>${course.display_org_with_default}</li>
+      <li>${course.display_name}</li>
+      <li>${_("Starts")}: <time itemprop="startDate" datetime="${course.start_datetime_text()}">${course.start_datetime_text()}</time></li>
+    </ul>
+    </div>
+  </a>
+</article>
