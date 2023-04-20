@@ -42,42 +42,7 @@ from openedx.core.djangolib.markup import HTML, Text
             <button class="btn">Free</button>
             <button class="btn">Trending</button>
           </div>
-          % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
-            <div class="row pt-3 gutter-2rem">
-              %for course in courses[:6]:
-                <div class="col-12 col-md-6 col-lg-4">
-                  <a href="${reverse('about_course', args=[text_type(course.id)])}">
-                      <div class="course-item">
-                      <div class="category-badge" style="background-color: #387aa6">
-                          Information Technology
-                      </div>
-                      <img
-                          height="auto"
-                          width="100%"
-                          src="${static.url('images/course-placeholder.png')}"
-                      />
-                      <div class="course-details-container">
-                          <div class="d-flex align-items-center">
-                          <img
-                              class="me-1"
-                              height="auto"
-                              width="32px"
-                              src="${course.course_image_url}"
-                          />
-                          <h2 class="course-title">${course.display_org_with_default}</h2>
-                          </div>
-                          <p class="course-description mt-2 pb-3">
-                              ${course.display_name}
-                          </p>
-                          <div class="course-start">Class Starts:</div>
-                          <span class="course-start-date">${course.start_datetime_text()}</span>
-                      </div>
-                      </div>
-                  </a>
-                </div>
-              %endfor
-            </div>
-          % endif
+          <%include file="${courses_list}" />
         </section>
       </div>
     </div>
