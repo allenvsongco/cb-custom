@@ -42,8 +42,9 @@ from openedx.core.djangolib.markup import HTML, Text
             <button class="btn">Free</button>
             <button class="btn">Trending</button>
           </div>
-          <div class="row pt-3 gutter-2rem">
-            <div class="col-12 col-md-6 col-lg-4">
+          <div class="row pt-3 gutter-2rem courses-list-container">
+            <%include file="${courses_list}" />
+            <!-- <div class="col-12 col-md-6 col-lg-4">
               <a href="">
                 <div class="course-item">
                   <div class="category-badge" style="background-color: #387aa6">
@@ -222,7 +223,7 @@ from openedx.core.djangolib.markup import HTML, Text
                   </div>
                 </div>
               </a>
-            </div>
+            </div> -->
           </div>
         </section>
       </div>
@@ -834,7 +835,7 @@ from openedx.core.djangolib.markup import HTML, Text
 
     <section class="CTA-Main bg-cta-gradient">
       <div class="contained-wrapper bg-overlay-img pt-6 pb-6">
-        <div class="col-12 col-md-12 col-lg-6 col-xl-5 h-100">
+        <div class="col-12 col-md-12 col-lg-6 col-xl-5 h-100 d-flex align-items-center">
           <div class="d-flex flex-column justify-content-center">
             <h1 class="text-left">Want to get the latest updates from us?</h1>
             <p class="text-left">
