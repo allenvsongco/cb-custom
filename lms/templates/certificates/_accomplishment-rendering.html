@@ -1,0 +1,232 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='../static_content.html'/>
+<%
+course_mode_class = course_mode if course_mode else ''
+%>
+
+<% change = 0
+ list = ["course-v1:DAP+SPCapstone001+2021_Q2","course-v1:DAP+SPCapstone006+2021_Q3","course-v1:DAP+SPCapstone005+2021_Q3","course-v1:DAP+SPCapstone003+2021_Q4","course-v1:DAP+SPCapstone004+2022_Q1","course-v1:Test+CT101+2021_T1"]
+ for x in list:
+   if x == course_id :
+     change = 1
+   endif
+ endfor
+ %>
+ <%
+ effort_hrs = "N/A"
+ course_hrs = [
+ ["course-v1:Coursebank+LEAP001+2023_Q1","2"],["course-v1:Coursebank+LEAP002+2023_Q1","2"],["course-v1:Coursebank+LEAP003+2023_Q1","2"], ["course-v1:Coursebank+LEAP003+2023_Q1","2"],["course-v1:Coursebank+LEAP004+2023_Q1","2"],["course-v1:Coursebank+DM007+2023_Q1","2"],["course-v1:Coursebank+DM008+2023_Q1","2"],
+ ["course-v1:DAP+SP101+2020_Q1","3"],
+ ["course-v1:DAP+SPCapstone001+2021_Q2","5"],["course-v1:DAP+SPCapstone002+2021_Q3","5"],["course-v1:DAP+SPCapstone005+2021_Q3","5"],["course-v1:DAP+SPCapstone006+2021_Q3","5"],["course-v1:DAP+SPCapstone003+2021_Q4","5"],["course-v1:DICT+DICT-DLS005+2022_Q1","6"],
+ ["course-v1:DAP+SP501+2020_Q1","8"],["course-v1:DAP+SP802+2020_Q2","8"],["course-v1:DAP+SP1005+2020_Q3","8"],["course-v1:DAP+SP1006+2020_Q3","8"],["course-v1:DAP+SP1008+2020_Q4","8"],["course-v1:DAP+SP1002+2020_Q3","8"],["course-v1:DAP+SP503+2020_Q2","8"],["course-v1:iACADEMY+PRO001+2021_Q1","8"],["course-v1:iACADEMY+PRO004+2021_Q1","8"],["course-v1:iACADEMY+PRO003+2021_Q1","8"],["course-v1:Coursebank+CB002+2021_Q3","8"],
+ ["course-v1:EdulynxCorp+EDLX001+2021_Q4","8"],["course-v1:DAP+projma101+2019_T3","15"],["course-v1:DICT+DICT-DLS001+2022_Q1","6"],["course-v1:DICT+DICT-DLS002+2022_Q1","12"],["course-v1:DICT+DICT-DLS003+2022_Q1","6"],["course-v1:DICT+DICT-DLS004+2022_Q1","6"],["course-v1:DICT+DICT-DLS005+2022_Q1","6"],["course-v1:DICT+DICT-ICT001+2022_Q1","8"],["course-v1:DICT+DICT-ICT002+2022_Q1","8"],["course-v1:DICT+DICT-ICT003+2022_Q1","8"],
+ ["course-v1:DICT+DICT-ICT004+2022_Q1","8"],["course-v1:DICT+DICT-ICT006+2022_Q1","8"],["course-v1:DICT+DICT-ICT007+2022_Q1","8"],["course-v1:DICT+DICT-ICT010+2022_Q1","8"],
+ ["course-v1:DICT+DICT-ICT011+2022_Q1","8"],["course-v1:DICT+DICT-ICT012+2022_Q1","8"],["course-v1:DICT+DICT-ICT013+2022_Q1","8"],["course-v1:DICT+DICT-ICT017+2022_Q1","8"],["course-v1:DICT+DICT-ICT014+2022_Q1","8"],["course-v1:DICT+DICT-ICT015+2022_Q1","8"],["course-v1:DICT+DICT-ICT016+2022_Q1","8"],["course-v1:DICT+DICT-ICT018+2022_Q1","8"],["course-v1:DICT+DICT-WD001+2022_Q1","8"],["course-v1:DICT+DICT-WD002+2022_Q1","8"],
+ ["course-v1:DICT+DICT-WD003+2022_Q1","8"],["course-v1:DICT+DICT-WD005+2022_Q1","8"],["course-v1:DICT+DICT-MAD006+2022_Q1","8"],["course-v1:DICT+DICT-MAD007+2022_Q1","8"],["course-v1:DICT+DICT-MAD008+2022_Q1","8"],["course-v1:DICT+DICT-DM001+2022_Q1","8"],["course-v1:DICT+DICT-DM002+2022_Q1","8"],["course-v1:DICT+DICT-DM003+2022_Q1","8"],["course-v1:DICT+DICT-DM004+2022_Q1","8"],["course-v1:DICT+DICT-GD001+2022_Q1","8"],
+ ["course-v1:Coursebank+DM005+2023_Q1","8"],["course-v1:Coursebank+DM006+2023_Q1","8"],
+ ["course-v1:DICT+DICT-GD002+2022_Q1","8"],["course-v1:DICT+DICT-GD003+2022_Q1","8"],["course-v1:DICT+DICT-GD003+2022_Q1","8"],["course-v1:Coursebank+GD005+2023_Q1","8"],["course-v1:Coursebank+GD006+2023_Q1","8"],["course-v1:Coursebank+GD007+2023_Q1","8"],["course-v1:Coursebank+GD008+2023_Q1","8"],["course-v1:iACADEMY+PERDEV101+2023_Q1","9"],["course-v1:iACADEMY+LED101+2023_Q1","9"],
+ ["course-v1:IIAP+BNL102+2020_Q3","9"],["course-v1:IIAP+BNL106+2020_Q3","9"],
+ ["course-v1:DAP+SP201+2020_Q1","10"],["course-v1:DAP+SP202+2020_Q1","10"],["course-v1:DAP+SP203+2020_Q1","10"],["course-v1:CirroLytix+CX101+2019_T4","10"],["course-v1:DAP+SP1001+2020_Q3","10"],["course-v1:DAP+SP301+2020_Q1","10"],["course-v1:DAP+SP702+2020_Q2","10"],["course-v1:DAP+SP1003+2020_Q3","10"],["course-v1:DAP+SP1004+2020_Q3","10"],["course-v1:PCOO-FOIPMO+FOI101+2020_Q3","10"],["course-v1:DAP+SP901+2020_Q2","10"],["course-v1:DAP+SP902+2020_Q3","10"],["course-v1:DAP+SP102+2020_Q3","10"],["course-v1:DAP+SP701+2020_Q1","10"],["course-v1:DAP+SP1007+2020_Q4","10"],["course-v1:DAP+SP1010+2020_Q4","10"],["course-v1:DAP+SP602+2020_Q2","10"],["course-v1:DAP+SP801+2020_Q1","10"],["course-v1:iACADEMY+PRO002+2021_Q1","10"],["course-v1:DAP+SP302+2020_Q2","10"],
+ ["course-v1:DICT+DICT-DLS002+2022_Q1","12"],["course-v1:DAP+SP703+2020_Q2","12"],["course-v1:DAP+SP601+2020_Q1","12"],["course-v1:DAP+SP1009+2020_Q4","12"],["course-v1:iACADEMY+HR101+2020_Q2","12"],["course-v1:iACADEMY+RES101+2020_Q2","12"],["course-v1:iACADEMY+MA101+2020_Q2","12"],["course-v1:iACADEMY+LED101+2020_Q2","12"],
+ ["course-v1:DAP+SP502+2020_Q2","14"],
+ ["course-v1:DAP+projma101+2019_T3","15"],
+ ]
+ for a in range(len(course_hrs)):
+    if course_id == course_hrs[a][0]:
+        effort_hrs = course_hrs[a][1]
+        break;
+ %>
+
+  <div class="bootstrap-iso">
+	 <div class="cert-frame">
+
+     <div class="row px-4 pt-4 mb-auto">
+
+       <div class="col-8 ">
+         % if change == 1 :
+          <p class="text-verify">CERTIFICATE OF COMPLETION</p>
+         % elif course_id == "course-v1:SOSAJB+PROPMA101+2019_T1":
+          <p class="text-verify">Audit<br>Certificate</p>
+         % elif accomplishment_copy_course_org == 'Department of Information and Communications Technology':
+          <p class="text-verify">Certificate</p>
+         % else :
+          <p class="text-verify">${course_mode_class.capitalize()}<br>Certificate</p>
+         % endif
+         <div class="text-content">
+           ${certificate_id_number_title}: ${certificate_id_number}
+           % if change == 1 :
+              <p>Project Code: TFDQI<p>
+           % endif
+         </div>
+
+         % if change == 1 :
+           <p class="text-content">
+             <br><br>
+             This is presented to
+           </p>
+         % else :
+           <p class="text-content">
+           This is to certify that
+           </p>
+         % endif
+           <p class="text-content-name pt-4 pb-4">
+             ${accomplishment_copy_name}
+           </p>
+         % if change == 1 :
+            <p class="text-content">
+             for having completed the
+            </p>
+         % else :
+            <p class="text-content">
+             successfully completed and received a passing grade in
+            </p>
+         % endif
+           <p class="text-course">
+             ${accomplishment_copy_course_name}
+           </p>
+           <p class="text-content">
+           % if accomplishment_copy_course_org == 'Development Academy of the Philippines':
+            <p>conducted by Development Academy of the Philippines under Project Smarter Philippines through Data Analytics, R&D, Training and Adoption through Coursebank.</p>
+           % elif course_id == "course-v1:CirroLytix+CX101+2019_T4":
+            <p>a course of study offered by Development Academy of the Philippines under the project Smarter Philippines through Data Analytics, R&D, Training and Adoption through Coursebank</p>
+           % else :
+             ${accomplishment_copy_course_description}
+           % endif 
+           % if change == 1:
+            <p> </p>
+           % else:
+            <p>Training Hours : ${effort_hrs}</p>
+           % endif
+           % if cert_cpd_info:
+              This course grants the following Continuing Professional Development (CPD) units to the awardee:
+           % endif
+            </p>
+            % if cert_cpd_info:
+              <ul class="text-content" style="font-size: 0.9rem;">
+                % for credential in cert_cpd_info:
+                <li>
+                  ${credential['cpd_units']} Units for Profession ${credential['license']}
+                </li>
+                % endfor
+              </ul>
+              % if 'cpd_ptr' in cert_cpd_info[0]:
+              <p class="text-content mb-0">
+                Accreditation No.: ${cert_cpd_info[0]['cpd_ptr']}
+              </p>
+              % endif
+            % endif
+
+        </div>
+
+        <div class="col-4 d-flex justify-content-end p-0 right " style="height: 50%;">
+          <div class="logo-partner">
+            % if accomplishment_copy_course_org == 'Adarna House Inc.':
+              <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-Adarna+House+Inc..png" alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+            % elif accomplishment_copy_course_org == 'Development Academy of the Philippines ':
+              <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-DAP.png" alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+            % elif accomplishment_copy_course_org == 'Development Academy of the Philippines':
+              <img src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/certificates/logo-Professional+Development+and+Advancement+Training+Center.png" alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+            % elif accomplishment_copy_course_org == 'Insurance Institute for Asia and the Pacific, Inc':
+              <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-Insurance+Institute+for+Asia+and+the+Pacific%2C+Inc.png" alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+            % elif accomplishment_copy_course_org == 'Professional Development and Advancement Training Center':
+              <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-old-Professional+Development+and+Advancement+Training+Center.png" alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+            % elif accomplishment_copy_course_org == 'EdulynxCorp':
+              <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-EdulynxCorp.png"alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+	    % elif accomplishment_copy_course_org == 'Department of Information and Communications Technology':
+	      <img src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/DICT-Logo-nobg.png"alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+              <img src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/ILCDB+logo_2.png"alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+              % else:
+              <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-${accomplishment_copy_course_org}.png" alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+            % endif
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row px-4 pb-4 mt-auto d-flex align-items-end cert-footer">
+
+        % if certificate_data:
+        <div class="row justify-content-between px-4 pb-4" style="padding-bottom: 0 !important">
+        % for signatory in certificate_data.get('signatories', []):
+	   <div>
+
+      % if accomplishment_copy_course_org == 'EdulynxCorp':
+      <div class="text-signature" style="min-width: 320px;">
+
+	    % else:
+      <div class="text-signature" style="min-width: 200px; max-width: 300px">
+	    % endif
+              <div class="img-signature">
+                  <img src="${static.url(signatory['signature_image_path'])}" alt="${signatory['name']}" style="max-height: 64px;">
+              </div>
+              <p>
+                <b>${signatory['name']}</b>
+                <br>
+                ${signatory['title']}
+                <br>
+                ${signatory['organization']}
+              </p>
+            </div>
+          </div>
+        % endfor
+        </div>
+        % endif
+	
+	% if accomplishment_copy_course_org == 'Department of Information and Communications Technology' or accomplishment_copy_course_org == 'Development Academy of the Philippines':
+	<div class="col-3 p-0" style="margin-left: 740px; margin-bottom: 20px; text-align: right; align-items: right; max-width: 25%;">
+          <img src="/static/my-bootstrap/images/certificates/logogray.png" alt="${platform_name}" >
+          Professional Certificate<br>
+          <b>${certificate_date_issued_title} ${certificate_date_issued}</b>
+        </div>
+  % elif accomplishment_copy_course_org == 'Coursebank':
+  <div class="col-3 p-0" style="margin-left: 740px; margin-bottom: 20px; text-align: right; align-items: right; max-width: 25%;">
+    <img src="/static/my-bootstrap/images/certificates/logogray.png" alt="${platform_name}" >
+    Professional Certificate<br>
+    <b>${certificate_date_issued_title} ${certificate_date_issued}</b>
+  </div>
+  % elif course_id == "course-v1:SOSAJB+PROPMA101+2019_T1":
+  <div class="col-3 p-0" style="margin-left: 740px; margin-bottom: 20px; text-align: right; align-items: right; max-width: 25%;">
+    <img src="/static/my-bootstrap/images/certificates/logogray.png" alt="${platform_name}">
+    Professional Certificate<br>
+    <b>${certificate_date_issued_title} ${certificate_date_issued}</b>
+  </div>
+  % elif accomplishment_copy_course_org == 'EdulynxCorp':
+  <div class="col-3 p-0" style="margin-left: 740px; margin-bottom: 20px; text-align: right; align-items: right; max-width: 25%;">
+    <img src="/static/my-bootstrap/images/certificates/logogray.png" alt="${platform_name}" >
+    Professional Certificate<br>
+    <b>${certificate_date_issued_title} ${certificate_date_issued}</b>
+  </div>
+  % elif accomplishment_copy_course_org == 'iACADEMY':
+  <div class="col-3 p-0" style="margin-left: 740px; margin-bottom: 20px; text-align: right; align-items: right; max-width: 25%;">
+    <img src="/static/my-bootstrap/images/certificates/logogray.png" alt="${platform_name}" >
+    Professional Certificate<br>
+    <b>${certificate_date_issued_title} ${certificate_date_issued}</b>
+  </div>
+	% else:
+        <div class="col-3 p-0 pl-4 pb-1 mr-4 my-auto ">
+          <img src="/static/my-bootstrap/images/certificates/logogray.png" alt="${platform_name}">
+        </div>
+        % if change == 1:
+	<div class="col-3 p-0" style="padding-bottom: 50px !important;">
+	% else:
+	<div class="col-3 p-0">
+	% endif
+          Professional Certificate<br>
+          <b>${certificate_date_issued_title} ${certificate_date_issued}</b>
+        </div>
+        <div class="col p-0 ">
+          % if cert_cpd_info:
+            % for credential in cert_cpd_info:
+            <div>
+              ${credential['license']} License No.:<br>
+              <b>${credential['registration_number']}</b>
+            </div>
+            % endfor
+          % endif
+	% endif
+        </div>
+      </div>
+
+    </div>
+  </div>
