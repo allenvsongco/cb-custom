@@ -1,11 +1,11 @@
-<%page expression_filter="h"/>
+<%page expression_filter="h" />
 <%inherit file="main.html" />
-<%namespace name='static' file='static_content.html'/>
-<%!
-from django.utils.translation import gettext as _
+<%namespace name='static' file='static_content.html' />
+<%! 
+from django.utils.translation import gettext as _ 
+from django.urls import reverse from openedx.core.djangolib.markup
 from django.urls import reverse
-
-from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangolib.markup import HTML, Text 
 %>
   <div class="full-width-wrapper">
     <section class="hero-banner">
@@ -36,9 +36,9 @@ from openedx.core.djangolib.markup import HTML, Text
           <a href="" class="fw-bold">View all Courses</a>
         </div>
         <div class="section-tabs d-flex mt-4 pb-4">
-          <button class="btn btn-primary">Most Popular</button>
-          <button class="btn">Free</button>
-          <button class="btn">Trending</button>
+          <button class="btn btn-primary btn-filter-course" data-key="most-popular">Most Popular</button>
+          <button class="btn btn-filter-course" data-key="free">Free</button>
+          <button class="btn btn-filter-course" data-key="free">Trending</button>
         </div>
         <div class="row pt-3 gutter-2rem courses-list-container">
           <!-- <div class="col-12 col-md-6 col-lg-4">
@@ -645,7 +645,7 @@ from openedx.core.djangolib.markup import HTML, Text
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
             cupidatat non proident.
           </p>
-          <form class="d-flex flex-wrap flex-md-nowrap">
+          <form id="subscribe" class="d-flex flex-wrap flex-md-nowrap">
             <input type="text" class="form-control me-0 me-md-3" />
             <button class="btn text-primary mt-3 mt-md-0">Subscribe</button>
           </form>
@@ -750,24 +750,24 @@ from openedx.core.djangolib.markup import HTML, Text
           '</div>'
       }
 
-      var fetchCoursesTags = function (data) {
-        $.ajax({
-          url: "https://discovery.tmtg-clone.click/api/v1/courses/",
-          success: function (data) {
-            let coursesData = data.results;
-            if (coursesData.length > 3) {
-              coursesData = coursesData.slice(0, 6)
-            }
+      // var fetchCoursesTags = function (data) {
+      //   $.ajax({
+      //     url: "https://discovery.tmtg-clone.click/api/v1/courses/",
+      //     success: function (data) {
+      //       let coursesData = data.results;
+      //       if (coursesData.length > 3) {
+      //         coursesData = coursesData.slice(0, 6)
+      //       }
 
-            coursesData.forEach((course) => {
-              $('.courses-list-container').append(generateCoursesHtml(course));
-            });
-          },
-          error: function (xhr, status, error) {
-            console.log(error);
-          }
-        })
-      }();
+      //       coursesData.forEach((course) => {
+      //         $('.courses-list-container').append(generateCoursesHtml(course));
+      //       });
+      //     },
+      //     error: function (xhr, status, error) {
+      //       console.log(error);
+      //     }
+      //   })
+      // }();
 
       var fetchPrograms = function (data) {
         $.ajax({
@@ -788,6 +788,31 @@ from openedx.core.djangolib.markup import HTML, Text
         })
       }();
 
+      $('.btn-filter-course').click(function () {
+        $('.btn-filter-course').removeClass('btn-primary');
+        $(this).addClass('btn-primary');
+        fetchCourseWithFilter($(this).attr('data-key'));
+      });
+
+      var fetchCourseWithFilter = function (filter) {
+        $.ajax({
+          url: "https://tmtg-clone.click/api/courses/" + filter,
+          success: function (data) {
+            let coursesData = data.results;
+            if (coursesData.length > 3) {
+              coursesData = coursesData.slice(0, 6)
+            }
+
+            coursesData.forEach((course) => {
+              $('.courses-list-container').append(generateCoursesHtml(course));
+            });
+          },
+          error: function (xhr, status, error) {
+            console.log(error);
+          }
+        })
+      }
+
       var generateSpecializationProgramsHtml = function (data) {
         return '<div class="col-12 col-md-6 col-lg-4">' +
           '<a href="">' +
@@ -803,5 +828,10 @@ from openedx.core.djangolib.markup import HTML, Text
           '</a>' +
           '</div>';
       }
+
+      $('#subscribe').click(function(e){
+        e.preventDefault();
+        $(this).html('<p><b>The subscription feature is currently unavaiable right now.</b></p>');
+      });
     });
   </script>
