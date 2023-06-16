@@ -4,8 +4,8 @@
 
 <%block name="pagetitle">${_("Categories)}</%block>
 
-{% block body %}
-
+<main id="main" aria-label="Cntent" tabindex="-1">
+<%block name="pagecontent">
 <div class="bg-gradient-img">
     <div class="contained-wrapper pt-5 pb-5">
         <section class="category-section">
@@ -684,4 +684,5 @@
     </div>
 </div>
 
-{% endblock  %}
+</%block>
+</main>
