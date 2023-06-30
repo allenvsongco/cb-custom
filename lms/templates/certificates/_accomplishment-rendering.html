@@ -45,12 +45,12 @@ course_mode_class = course_mode if course_mode else ''
              % if change == 1 :
               <p class="text-verify pt-5">CERTIFICATE OF COMPLETION</p>
              % elif course_id == "course-v1:SOSAJB+PROPMA101+2019_T1" and course_mode_class == "honor":
-              <p class="text-verify pt-5">Audit<br>Certificate</p>
+              <p class="text-verify pt-5">Audit<br>CERTIFICATE</p>
              % elif accomplishment_copy_course_org == 'Department of Information and Communications Technology':
              <p class="text-verify pt-5"></p> 
              <p class="text-verify pt-5">Certificate</p>
              % else :
-              <p class="text-verify pt-5">${course_mode_class.capitalize()}<br>Certificate</p>
+              <p class="text-verify pt-5">${course_mode_class.capitalize()}<br>CERTIFICATE</p>
              % endif
              <div class="text-content text-uppercase">
                ${certificate_id_number_title}: ${certificate_id_number}
