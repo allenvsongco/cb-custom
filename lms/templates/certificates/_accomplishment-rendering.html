@@ -47,8 +47,8 @@ course_mode_class = course_mode if course_mode else ''
              % elif course_id == "course-v1:SOSAJB+PROPMA101+2019_T1" and course_mode_class == "honor":
               <p class="text-verify pt-5">Audit<br>CERTIFICATE</p>
              % elif accomplishment_copy_course_org == 'Department of Information and Communications Technology':
-             <p class="text-verify pt-5"></p> 
-             <p class="text-verify pt-5">Certificate</p>
+             <p class="text-verify"></p> 
+             <p class="text-verify pt-5">CERTIFICATE</p>
              % else :
               <p class="text-verify pt-5">${course_mode_class.capitalize()}<br>CERTIFICATE</p>
              % endif
@@ -77,7 +77,7 @@ course_mode_class = course_mode if course_mode else ''
                   Training Hours : ${effort_hrs}
               </p>
 
-              <div class="col-3 p-0 pl-4 mr-4 my-auto ">
+              <div class="col-3 p-0">
                   <img class="logo-coursebank" src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/theme/Coursebank+Logo+-+Main.png" alt="${platform_name}">
               </div>
           </div>
@@ -97,7 +97,7 @@ course_mode_class = course_mode if course_mode else ''
                   <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-EdulynxCorp.png"alt="Image for logo of course organization ${accomplishment_copy_course_org}">
               % elif accomplishment_copy_course_org == 'Department of Information and Communications Technology':
                   <img src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/DICT-Logo-nobg.png"alt="Image for logo of course organization ${accomplishment_copy_course_org}">
-                  <img src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/ILCDB+logo_2.png"alt="Image for logo of course organization ${accomplishment_copy_course_org}">
+                  <img src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/certificates/ILCDB%2Blogo_3.png"alt="Image for logo of course organization ${accomplishment_copy_course_org}">
               % else:
                   <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-${accomplishment_copy_course_org}.png" alt="Image for logo of course organization ${accomplishment_copy_course_org}">
               % endif
@@ -105,7 +105,7 @@ course_mode_class = course_mode if course_mode else ''
               % if certificate_data:
               <div class="col text-signature">
                 % for signatory in certificate_data.get('signatories', []):
-                  <div class="img-signature px-5">
+                  <div class="img-signature pl-5">
                       <img src="${static.url(signatory['signature_image_path'])}" alt="${signatory['name']}" style="max-height: 64px;">
                   </div>
                   <p class="text-signature-name">
