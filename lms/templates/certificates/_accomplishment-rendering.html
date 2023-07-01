@@ -45,12 +45,12 @@ course_mode_class = course_mode if course_mode else ''
              % if change == 1 :
               <p class="text-verify pt-5">CERTIFICATE OF COMPLETION</p>
              % elif course_id == "course-v1:SOSAJB+PROPMA101+2019_T1" and course_mode_class == "honor":
-              <p class="text-verify pt-5">Audit<br>CERTIFICATE</p>
+              <p class="text-verify pt-5">AUDIT<br>CERTIFICATE</p>
              % elif accomplishment_copy_course_org == 'Department of Information and Communications Technology':
              <p class="text-verify"></p> 
              <p class="text-verify pt-5">CERTIFICATE</p>
              % else :
-              <p class="text-verify pt-5">${course_mode_class.capitalize()}<br>CERTIFICATE</p>
+              <p class="text-verify pt-5 text-uppercase">${course_mode_class.capitalize()}<br>CERTIFICATE</p>
              % endif
              <div class="text-content text-uppercase">
                ${certificate_id_number_title}: ${certificate_id_number}
@@ -82,7 +82,7 @@ course_mode_class = course_mode if course_mode else ''
               </div>
           </div>
           <div class="col-4 d-flex flex-column p-0 align-items-end">
-              <div class="col logo-partner">
+              <div class="col logo-partner" style="max-height:320px">
               % if accomplishment_copy_course_org == 'Adarna House Inc.':
                   <img src="https://coursebank-static-assets-tmtg.s3-ap-northeast-1.amazonaws.com/certificates/logo-Adarna+House+Inc..png" alt="Image for logo of course organization ${accomplishment_copy_course_org}">
               % elif accomplishment_copy_course_org == 'Development Academy of the Philippines ':
