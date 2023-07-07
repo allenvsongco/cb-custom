@@ -751,7 +751,7 @@ from openedx.core.djangolib.markup import HTML, Text
 
       // var fetchCoursesTags = function (data) {
       //   $.ajax({
-      //     url: "https://discovery.tmtg-clone.click/api/v1/courses/",
+      //     url: "https://discovery.moocspace.org/api/v1/courses/",
       //     success: function (data) {
       //       let coursesData = data.results;
       //       if (coursesData.length > 3) {
@@ -770,7 +770,7 @@ from openedx.core.djangolib.markup import HTML, Text
 
       var fetchPrograms = function (data) {
         $.ajax({
-          url: "https://discovery.tmtg-clone.click/api/v1/programs/",
+          url: "https://discovery.moocspace.org/api/v1/programs/",
           success: function (data) {
             let programsData = data.results;
             if (programsData.length > 3) {
@@ -795,7 +795,7 @@ from openedx.core.djangolib.markup import HTML, Text
 
       var fetchCourseWithFilter = function (filter) {
         $.ajax({
-          url: "https://tmtg-clone.click/api/courses/" + filter,
+          url: "https://moocspace.org/api/courses/" + filter,
           success: function (data) {
             let coursesData = data.results;
             if (coursesData.length > 3) {
