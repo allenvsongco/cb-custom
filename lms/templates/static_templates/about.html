@@ -1,16 +1,81 @@
 <%page expression_filter="h"/>
 <%! from django.utils.translation import ugettext as _ %>
 <%inherit file="../main.html" />
+<%namespace name='static' file='../static_content.html'/>
 
 <%block name="pagetitle">${_("About")}</%block>
 
-<main id="main" aria-label="Content" tabindex="-1">
-    <section class="container about">
-        <h1>
-            <%block name="pageheader">${page_header or _("About")}</%block>
-        </h1>
-        <p>
-            <%block name="pagecontent">Coursebank is an online learning platform powered by <a href="https://open.edx.org">Open edX</a>. It runs with <a href="https://docs.tutor.overhang.io">Tutor</a>, with the customized <a href="https://github.com/overhangio/tutor-indigo">Indigo</a> theme.</%block>
-        </p>
+<div class="bg-for-about">
+    <div class="contained-wrapper">
+        <section class="section-gradient-page-title">
+            <h1 class="page-title" style="font-size: 40px">About Us</h1>
+        </section>
+    </div>
+</div>
+
+<div class="contained-wrapper pt-6 pb-6">
+    <section class="section-about">
+        <!-- <div class="row gx-5 py-5">
+            <div class="col-12 col-md-6">
+                <h4 class="mb-4">Our Story</h4>
+                <p>Lörem ipsum digt terar, därför att mepubelt för att kaforade, och realiga anera och terades
+                    makrovis i nytin, och tigisk, gyst rohet. Lörem ipsum digt terar, därför att mepubelt för att
+                    kaforade, och realiga anera och terades makrovis i nytin, och tigisk, gyst rohet. Lörem ipsum
+                    digt terar, därför att mepubelt för att kaforade, och realiga anera och terades makrovis i
+                    nytin, och tigisk, gyst rohet. </p>
+                <p>Lörem ipsum digt terar, därför att mepubelt för att kaforade, och realiga anera och terades
+                    makrovis i nytin, och tigisk, gyst rohet. Lörem ipsum digt terar, därför att mepubelt för att
+                    kaforade, och realiga anera och terades makrovis i nytin, och tigisk, gyst rohet. Lörem ipsum
+                    digt terar, därför att mepubelt för att kaforade, och realiga anera och terades makrovis i
+                    nytin, och tigisk, gyst rohet. </p>
+            </div>
+            <div class="col-12 col-md-6">
+                <img width="100%" height="100%" style="object-fit: cover;" src="${static.url('images/about/about-img-1.png')}" />
+            </div>
+        </div> -->
+        <div class="row gx-5 py-5">
+            <div class="col-12 col-md-6">
+                <img width="100%" height="100%" style="object-fit: cover;" src="${static.url('images/about/tech.png')}" />
+            </div>
+            <div class="col-12 col-md-6">
+                <h4 class="mb-4 mt-4 mt-md-0">Our Technology</h4>
+                <p><a href="/"><u>Coursebank</u></a> is powered by Open EdX©.</p>
+                <p>
+                    The Open edX® platform is a free and open source course management system that was originally
+                    developed by edX. The Open edX platform is used all over the world to host Massive Open Online
+                    Courses (MOOCs) as well as smaller classes and training modules.
+                </p>
+
+                <p>All use of the Open edX trademarks is subject to compliance with edX's Trademark Policy. Read
+                    more about Open EdX's policies here.</p>
+
+                <p>CB E-CADEMY INCORPORATED10F One Global Place, 25th Street & 5th Avenue, Bonifacio Global City,
+                    Taguig City 1630 Philippines</p>
+                </p>
+            </div>
+
+        </div>
+
     </section>
-</main>
+</div>
+
+<section class="CTA-Main bg-cta-gradient">
+    <div class="contained-wrapper bg-overlay-img pt-6 pb-6">
+        <div class="col-12 col-md-12 col-lg-6 col-xl-5 h-100 d-flex align-items-center">
+        <div class="d-flex flex-column justify-content-center">
+            <h1 class="text-left">Want to get the latest updates from us?</h1>
+            <p class="text-left">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident.
+            </p>
+            <a class="btn text-primary"
+            href="http://sendy.coursebank.ph/subscription?f=h7639Z8y2GPrxoIyel9A6U892OzYJzX5ZUnqmIU86koxveECfyjtQSKurB1cjjnql892zz">Subscribe</a>
+            <!-- <form id="subscribe" class="d-flex flex-wrap flex-md-nowrap">
+            <input type="text" class="form-control me-0 me-md-3" />
+            <button class="btn text-primary mt-3 mt-md-0">Subscribe</button>
+            </form> -->
+        </div>
+        </div>
+    </div>
+</section>
