@@ -20,7 +20,7 @@ from openedx.core.djangolib.markup import HTML, Text
             </p>
             <div class="d-flex align-items-center">
               <a class="btn btn-secondary me-4" href="/register?next=%2F">Join our community</a>
-              <a href="#" class="text-white">It’s absolutely free!</a>
+              <!-- <a href="#" class="text-white">It’s absolutely free!</a> -->
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@ from openedx.core.djangolib.markup import HTML, Text
       <section class="section-courses-container">
         <div class="section-header d-flex align-items-center">
           <h3 class="section-title me-auto">Courses to get you started</h3>
-          <a href="" class="fw-bold">View all Courses</a>
+          <a href="/courses" class="fw-bold">View all Courses</a>
         </div>
         <div class="section-tabs d-flex mt-4 pb-4">
           <button class="btn btn-primary btn-filter-course" data-key="ordering=-published_at">Latest</button>
@@ -225,7 +225,7 @@ from openedx.core.djangolib.markup import HTML, Text
       </section>
     </div>
   </div>
-  <div class="contained-wrapper pt-6 pb-6">
+  <!-- <div class="contained-wrapper pt-6 pb-6">
     <section class="section-platform-container">
       <div class="section-header d-flex align-items-center">
         <h3 class="section-title">
@@ -259,7 +259,7 @@ from openedx.core.djangolib.markup import HTML, Text
         </div>
       </div>
     </section>
-  </div>
+  </div> -->
   <!-- <div class="contained-wrapper pt-6 pb-6">
     <section class="section-specialization-bundle-container">
       <div class="section-header d-flex align-items-center">
@@ -273,7 +273,7 @@ from openedx.core.djangolib.markup import HTML, Text
       </div>
     </section>
   </div> -->
-  <div class="bg-light-1">
+  <!-- <div class="bg-light-1">
     <div class="contained-wrapper pt-6 pb-6">
       <section class="section-specialization-bundle-container">
         <div class="section-header d-flex align-items-center">
@@ -329,13 +329,13 @@ from openedx.core.djangolib.markup import HTML, Text
         </div>
       </section>
     </div>
-  </div>
-  <div class="bg-dark-1">
+  </div> -->
+  <!-- <div class="bg-dark-1">
     <div class="contained-wrapper pt-6 pb-6">
       <section class="category-section">
         <div class="section-header d-flex align-items-center">
           <h3 class="section-title me-auto text-white">Browse by Category</h3>
-          <a href="" class="fw-bold text-white">View all Courses</a>
+          <a href="/courses" class="fw-bold text-white">View all Courses</a>
         </div>
         <div class="row mt-1 gutter-2rem">
           <div class="col-12 col-md-6 col-lg-3">
@@ -405,7 +405,7 @@ from openedx.core.djangolib.markup import HTML, Text
         </div>
       </section>
     </div>
-  </div>
+  </div> -->
 
   <div class="contained-wrapper pt-6 pb-6">
     <section class="section-testimonials">
@@ -423,14 +423,11 @@ from openedx.core.djangolib.markup import HTML, Text
           <a href="">
             <div class="bg-light-1 p-5">
               <p class="text-black">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                "MOOCs helped me learn at my own pace that suits me in a more comfortably focused environment, paving the way for my course completion ahead of time."
               </p>
               <div class="d-flex align-items-center pt-1">
-                <img class="me-2" height="52px" width="52px" src="${static.url('images/avatar/tisha.png')}" />
-                <p class="mb-0 fw-bold text-dark-1">Richard D'Amore DDS</p>
+                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/GarryVale.jpg')}" />
+                <p class="mb-0 fw-bold text-dark-1">Garry Vale</p>
               </div>
             </div>
           </a>
@@ -439,14 +436,11 @@ from openedx.core.djangolib.markup import HTML, Text
           <a href="">
             <div class="bg-light-1 p-5">
               <p class="text-black">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                Coursebank is an exceptional online learning platform that has greatly revolutionized my learning experience, especially in the field of Science and Technology.
               </p>
               <div class="d-flex align-items-center pt-1">
-                <img class="me-2" height="52px" width="52px" src="${static.url('images/avatar/tisha.png')}" />
-                <p class="mb-0 fw-bold text-dark-1">Rudolph Kreiger</p>
+                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/MichaelTelesforo.JPG')}" />
+                <p class="mb-0 fw-bold text-dark-1">Michael Telesforo</p>
               </div>
             </div>
           </a>
@@ -455,14 +449,11 @@ from openedx.core.djangolib.markup import HTML, Text
           <a href="">
             <div class="bg-light-1 p-5">
               <p class="text-black">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                Education is an ongoing pursuit that has the potential to shape our lives in profound ways. In my quest for knowledge and personal growth, I discovered Coursebank. 
               </p>
               <div class="d-flex align-items-center pt-1">
-                <img class="me-2" height="52px" width="52px" src="${static.url('images/avatar/tisha.png')}" />
-                <p class="mb-0 fw-bold text-dark-1">Bobby Huel</p>
+                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/BrennanTerre.jpg')}" />
+                <p class="mb-0 fw-bold text-dark-1">Brennan Terre</p>
               </div>
             </div>
           </a>
@@ -471,14 +462,11 @@ from openedx.core.djangolib.markup import HTML, Text
           <a href="">
             <div class="bg-light-1 p-5">
               <p class="text-black">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                Coursebank's massive open online courses (MOOCs) have been a game-changer for my data science and analytics career.
               </p>
               <div class="d-flex align-items-center pt-1">
-                <img class="me-2" height="52px" width="52px" src="${static.url('images/avatar/tisha.png')}" />
-                <p class="mb-0 fw-bold text-dark-1">Tisha Reynolds I</p>
+                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/WinbertJamesTeves.jpg')}" />
+                <p class="mb-0 fw-bold text-dark-1">Winbert James Teves</p>
               </div>
             </div>
           </a>
@@ -487,14 +475,11 @@ from openedx.core.djangolib.markup import HTML, Text
           <a href="">
             <div class="bg-light-1 p-5">
               <p class="text-black">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                Coursebank is like a library, but for your brain. You can learn anything you want, whenever you want, and for free. It's like a buffet of knowledge, with something for everyone.
               </p>
               <div class="d-flex align-items-center pt-1">
-                <img class="me-2" height="52px" width="52px" src="${static.url('images/avatar/tisha.png')}" />
-                <p class="mb-0 fw-bold text-dark-1">Tisha Reynolds I</p>
+                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/JeramieJoyceCDomingo.jpg')}" />
+                <p class="mb-0 fw-bold text-dark-1">Jeramie Joyce C. Domingo - Department of Trade & Industry</p>
               </div>
             </div>
           </a>
@@ -503,14 +488,11 @@ from openedx.core.djangolib.markup import HTML, Text
           <a href="">
             <div class="bg-light-1 p-5">
               <p class="text-black">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                My experience with Coursebank's massive open online courses has been excellent. The courses are well-structured and engaging, and the learning resources provided are comprehensive and helpful.
               </p>
               <div class="d-flex align-items-center pt-1">
-                <img class="me-2" height="52px" width="52px" src="${static.url('images/avatar/tisha.png')}" />
-                <p class="mb-0 fw-bold text-dark-1">Tisha Reynolds I</p>
+                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/MaeCainto.jpg')}" />
+                <p class="mb-0 fw-bold text-dark-1">Mae Cainto</p>
               </div>
             </div>
           </a>
@@ -559,33 +541,9 @@ from openedx.core.djangolib.markup import HTML, Text
       </section>
     </div>
   </div>
-  <section class="CTA-Main bg-cta-gradient">
-    <div class="contained-wrapper bg-overlay-img pt-6 pb-6">
-      <div class="col-12 col-md-12 col-lg-6 col-xl-5 h-100 d-flex align-items-center">
-        <div class="d-flex flex-column justify-content-center">
-          <h1 class="text-left">Want to get the latest updates from us?</h1>
-          <p class="text-left">
-            Stay connected and be in the know by subscribing to our newsletter, where you'll receive the latest updates, news, and course launch directly to your inbox!
-          </p>
-          <a class="btn text-primary"
-            href="http://sendy.coursebank.ph/subscription?f=h7639Z8y2GPrxoIyel9A6U892OzYJzX5ZUnqmIU86koxveECfyjtQSKurB1cjjnql892zz">Subscribe</a>
-          <!-- <form id="subscribe" class="d-flex flex-wrap flex-md-nowrap">
-            <input type="text" class="form-control me-0 me-md-3" />
-            <button class="btn text-primary mt-3 mt-md-0">Subscribe</button>
-          </form> -->
-        </div>
-      </div>
-    </div>
-  </section>
 
   <script src="/js/scripts.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script>
     $(document).ready(function () {
@@ -707,7 +665,7 @@ from openedx.core.djangolib.markup import HTML, Text
         //   $('.courses-list-container').append(generateCoursesHtml(course));
         // });
         $.ajax({
-          url: "https://discovery.tmtg-clone.click/api/v1/courses/?limit=6&" + filter,
+          url: "https://discovery.moocspace.org/api/v1/courses/?limit=6&" + filter,
           // url: "https://648a779a17f1536d65e925f9.mockapi.io/test",
           success: function (data) {
             $('.courses-list-container').html('');
@@ -741,8 +699,6 @@ from openedx.core.djangolib.markup import HTML, Text
         '<h2 class="course-title">Coursebank</h2>' +
         '</div>' +
         '<p class="course-description mt-2 pb-3">' + data.title + '</p>' +
-        '<div class="course-start">Class Starts:</div>' +
-        '<span class="course-start-date">May 1, 2023</span>' +
         '</div>' +
         '</div>' +
         '</a>' +
