@@ -51,5 +51,6 @@ should_show_order_history = should_redirect_to_order_history_microfrontend() and
         <a class="dropdown-item" href="${reverse('learner_profile', kwargs={'username': username})}" role="menuitem">${_("Profile")}</a>
         <a class="dropdown-item" href="${reverse('account_settings')}" role="menuitem">${_("Account")}</a>
         <a class="dropdown-item" href="${settings.ORDER_HISTORY_MICROFRONTEND_URL}" role="menuitem">${_("Order History")}</a>
+        <a class="dropdown-item" href="${reverse('logout')}" role="menuitem">Logout</a>
     </div>
 </div>
