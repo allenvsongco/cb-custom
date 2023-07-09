@@ -79,24 +79,6 @@
     </footer>
   </div>
 % else:
-  <section class="CTA-Main bg-cta-gradient">
-    <div class="contained-wrapper bg-overlay-img pt-6 pb-6">
-      <div class="col-12 col-md-12 col-lg-6 col-xl-5 h-100 d-flex align-items-center">
-        <div class="d-flex flex-column justify-content-center">
-          <h1 class="text-left">Want to get the latest updates from us?</h1>
-          <p class="text-left">
-            Stay connected and be in the know by subscribing to our newsletter, where you'll receive the latest updates, news, and course launch directly to your inbox!
-          </p>
-          <a class="btn text-primary"
-            href="http://sendy.coursebank.ph/subscription?f=h7639Z8y2GPrxoIyel9A6U892OzYJzX5ZUnqmIU86koxveECfyjtQSKurB1cjjnql892zz">Subscribe</a>
-          <!-- <form id="subscribe" class="d-flex flex-wrap flex-md-nowrap">
-            <input type="text" class="form-control me-0 me-md-3" />
-            <button class="btn text-primary mt-3 mt-md-0">Subscribe</button>
-          </form> -->
-        </div>
-      </div>
-    </div>
-  </section>
   <div>
     <footer class="bg-dark-1 pt-6 pb-6">
       <div class="contained-wrapper">
@@ -152,13 +134,13 @@
             © Copyright 2023 Coursebank. All rights reserved.
           </p>
           <div class="footer-socials order-lg-1 order-0">
-            <img height="32px" width="32px" src="${static.url('images/social/facebook.png')}" />
-            <img
-              height="32px"
-              width="32px"
-              src="${static.url('images/social/instagram.png')}"
-            />
-            <img height="32px" width="32px" src="${static.url('images/social/twitter.png')}" />
+            <a href="https://www.facebook.com/coursebank.ph">
+              <img height="32px" width="32px" src="${static.url('images/social/facebook.png')}" />
+            </a>
+            <a href="https://instagram.com/coursebank.ph?igshid=YzcxN2Q2NzY0OA==">
+              <img height="32px" width="32px" src="${static.url('images/social/instagram.png')}"/>
+            </a>
+            {% comment %} <img height="32px" width="32px" src="${static.url('images/social/twitter.png')}" /> {% endcomment %}
           </div>
         </div>
       </div>

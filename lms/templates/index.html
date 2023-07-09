@@ -507,40 +507,84 @@ from openedx.core.djangolib.markup import HTML, Text
           <h3 class="section-title me-auto">Our Partners</h3>
         </div>
         <div class="row mt-4 gutter-2rem">
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <div class="d-flex justify-content-center bg-white">
-              <img height="133px" width="auto" src="${static.url('images/partners/pdat.png')}" />
+          
+          <a href="https://thecentre.ph//">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/partners/centre-nobg.png" />
+              </div>
             </div>
-          </div>
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <div class="d-flex justify-content-center bg-white">
-              <img height="133px" width="auto" src="${static.url('images/partners/dap.png')}" />
+          </a>
+
+          <a href="https://www.dict.gov.ph/">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/DICT-Logo-nobg.png" />
+              </div>
             </div>
-          </div>
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <div class="d-flex justify-content-center bg-white">
-              <img height="133px" width="auto" src="${static.url('images/partners/ah.png')}" />
+          </a>
+          
+          <a href="https://www.dost.gov.ph/">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/DOST.png" />
+              </div>
             </div>
-          </div>
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <div class="d-flex justify-content-center bg-white">
-              <img height="133px" width="auto" src="${static.url('images/partners/malacanang.png')}" />
+          </a>
+          
+          <a href="https://www.sosajbph.com/">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="${static.url('images/partners/pdat.png')}" />
+              </div>
             </div>
-          </div>
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <div class="d-flex justify-content-center bg-white">
-              <img height="133px" width="auto" src="${static.url('images/partners/rc.png')}" />
+          </a>
+          
+          <a href="https://adarna.com.ph/">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="${static.url('images/partners/ah.png')}" />
+              </div>
             </div>
-          </div>
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <div class="d-flex justify-content-center bg-white">
-              <img height="133px" width="auto" src="${static.url('images/partners/iacademy.png')}" />
+          </a>
+
+          <a href="#">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="${static.url('images/partners/malacanang.png')}" />
+              </div>
             </div>
-          </div>
+          </a>
+          
+          <a href="#">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="${static.url('images/partners/rc.png')}" />
+              </div>
+            </div>
+          </a>
+          
+          <a href="https://www.iacademy.edu.ph/">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="${static.url('images/partners/iacademy.png')}" />
+              </div>
+            </div>
+          </a>
+          
+          <a href="https://www.dap.edu.ph/">
+            <div class="partner-item col-12 col-md-4 col-lg-2">
+              <div class="d-flex justify-content-center bg-white">
+                <img height="133px" width="auto" src="${static.url('images/partners/dap.png')}" />
+              </div>
+            </div>
+          </a>
+
         </div>
       </section>
     </div>
   </div>
+  <%include file="subscribe.html" />
 
   <script src="/js/scripts.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -629,7 +673,7 @@ from openedx.core.djangolib.markup import HTML, Text
 
       var fetchPrograms = function (data) {
         $.ajax({
-          url: "https://discovery.moocspace.org/api/v1/programs/",
+          url: "https://discovery.tmtg-clone.click/api/v1/programs/",
           success: function (data) {
             let programsData = data.results;
             if (programsData.length > 3) {
