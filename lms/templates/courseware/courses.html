@@ -302,7 +302,7 @@
         //initialize filters
         var initFilters = function () {
             $.ajax({
-                url: "https://discovery.coursebank.ph/api/v1/subjects/",
+                url: "https://discovery.tmtg-clone.click/api/v1/subjects/",
                 success: function (data) {
                     let subjectFilterData = data.results;
                     $('.subject-filters').html('');
@@ -315,7 +315,7 @@
                 }
             })
             $.ajax({
-                url: "https://discovery.coursebank.ph/taxonomy/api/v1/skills/",
+                url: "https://discovery.tmtg-clone.click/taxonomy/api/v1/skills/",
                 success: function (data) {
                     let skillFilterData = data.results;
                     $('.skill-filters').html('');
@@ -328,7 +328,7 @@
                 }
             })
             $.ajax({
-                url: "https://discovery.coursebank.ph/api/v1/organizations/",
+                url: "https://discovery.tmtg-clone.click/api/v1/organizations/",
                 success: function (data) {
                     let organizationFilterData = data.results;
                     $('.organization-filters').html('');
@@ -426,7 +426,7 @@
                 }
             });
             $.ajax({
-                url: "https://discovery.coursebank.ph/api/v1/courses/?offset=" + offsetSize + "&q="+ searchQuery +"&subjects=" + encodeURIComponent(subjectStrings) + "&skills=" + encodeURIComponent(skillStrings) + "&organizations=" + encodeURIComponent(organizationStrings) + "",
+                url: "https://discovery.tmtg-clone.click/api/v1/courses/?offset=" + offsetSize + "&q="+ searchQuery +"&subjects=" + encodeURIComponent(subjectStrings) + "&skills=" + encodeURIComponent(skillStrings) + "&organizations=" + encodeURIComponent(organizationStrings) + "",
                 // url: "https://648a779a17f1536d65e925f9.mockapi.io/test",
                 success: function (data) {
                     $('.courses-list-container').html('');
