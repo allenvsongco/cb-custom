@@ -505,13 +505,9 @@ from openedx.core.djangolib.markup import HTML, Text
       <section class="section-partners">
         <div class="section-header d-flex align-items-center">
           <h3 class="section-title me-auto">Our Partners</h3>
-          <div class="d-flex slick-navigation">
-            <i class="bi bi-arrow-left-short partner-slider-prev"></i>
-            <i class="bi bi-arrow-right-short ms-3 partner-slider-next"></i>
-          </div>
         </div>
         <div class="row mt-4 gutter-2rem">
-          <div class="partner-item col-12 col-md-4 col-lg-2 partner-slider">
+          <div class="partner-item col-12 col-md-4 col-lg-2">
             <a href="https://thecentre.ph//">
               <div class="d-flex justify-content-center bg-white">
                 <img height="133px" width="160px" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/partners/centre-nobg.png" />
@@ -653,40 +649,6 @@ from openedx.core.djangolib.markup import HTML, Text
       $(".testi-slider-prev").click(function () {
         $(".testimonial-slider").slick("slickPrev");
       });
-
-      $(document).ready(function () {
-        $(".partner-slider").slick({
-          dots: false,
-          infinite: true,
-          speed: 300,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          prevArrow: false,
-          nextArrow: false,
-          // variableWidth: true,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-              },
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              },
-            },
-          ],
-        });
-        $(".partner-slider-next").click(function () {
-          $(".tartner-slider").slick("slickNext");
-        });
-        $(".partner-slider-prev").click(function () {
-          $(".partner-slider").slick("slickPrev");
-        });
 
       var coursesDataState;
 
