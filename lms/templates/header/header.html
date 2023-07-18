@@ -47,6 +47,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
   crossorigin="anonymous"></script>
+<div class="sticky-whole-nav">
 <div class="contained-wrapper">
     <nav class="main-navbar navbar navbar-expand-lg navbar-light">
       <button
@@ -109,7 +110,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
       </div>
     </nav>
   </div>
-
+</div>
 % if course:
 <!--[if lte IE 9]>
 <div class="ie-banner" aria-hidden="true">${Text(_('{begin_strong}Warning:{end_strong} Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.')).format(

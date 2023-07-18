@@ -1,82 +1,177 @@
-<div class="js-form-feedback" aria-live="assertive" tabindex="-1">
-</div>
-
-<% if ( context.createAccountOption !== false && !context.syncLearnerProfileData && !(context.enterpriseName && context.currentProvider) ) { %>
-<div class="toggle-form">
-    <span class="text"><%- gettext("First time here?") %></span>
-    <a href="#login" class="form-toggle" data-type="register"><%- gettext("Create an Account.") %></a>
-</div>
-<% } %>
-
-<% // Hide SSO related messages if we are not in the SSO pipeline.  %>
-<% if (context.enterpriseName && context.currentProvider) { %>
-    <% if (context.pipelineUserDetails && context.pipelineUserDetails.email) { %>
-        <h2><%- gettext("Sign in to continue learning as {email}").replace("{email}", context.pipelineUserDetails.email) %></h2>
-    <% } else { %>
-        <h2><%- gettext("Sign in to continue learning") %></h2>
-    <% } %>
-    <p>
-        <%- gettext("You already have an edX account with your {enterprise_name} email address.").replace(/{enterprise_name}/g, context.enterpriseName) %>
-        <% if (context.syncLearnerProfileData) {
-            %><%- gettext("Going forward, your account information will be updated and maintained by {enterprise_name}.").replace(/{enterprise_name}/g, context.enterpriseName) %>
-        <% } %>
-        <%- gettext("You can view your information or unlink from {enterprise_name} anytime in your Account Settings.").replace(/{enterprise_name}/g, context.enterpriseName) %>
-    </p>
-    <p><%- gettext("To continue learning with this account, sign in below.") %></p>
-<% } else if (!context.is_require_third_party_auth_enabled) { %>
-    <h1 class="section-title"><%- gettext("Sign In") %></h1>
-<% } %>
-
-<form id="login" class="login-form" tabindex="-1" method="POST">
-
-    <p class="sr">
-        <% if ( context.providers.length > 0 && !context.currentProvider || context.hasSecondaryProviders ) { %>
-            <%- gettext("Sign in here using your email address and password, or use one of the providers listed below.") %>
-        <% } else { %>
-            <%- gettext("Sign in here using your email address and password.") %>
-        <% } %>
-        <%- gettext("If you do not yet have an account, use the button below to register.") %>
-    </p>
-
-    <% if ( context.hasSecondaryProviders ) { %>
-        <button type="button" class="button-secondary-login form-toggle" data-type="institution_login">
-            <%- gettext("Use my university info") %>
-        </button>
-
-        <div class="section-title lines">
-            <h3>
-                <span class="text"><%- gettext("or sign in with") %></span>
-            </h3>
+<style>
+    .login-register-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .login-register  {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+    }
+    .form-type {
+        max-width: initial !important;
+        min-width: auto !important;
+        margin: 0 auto !important;
+    }
+    .btn-primary {
+        background: #3aa8a1 !important;
+        background-color: #3aa8a1 !important;
+    }
+    input[type=text] {
+        height: 48px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.375rem !important;
+        background: white !important;
+        margin-top: 8px !important;
+    }
+    input[type=email] {
+        height: 48px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.375rem !important;
+        background: white !important;
+        margin-top: 8px !important;
+    }
+    input[type=password] {
+        height: 48px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.375rem !important;
+        background: white !important;
+        margin-top: 8px !important;
+    }
+    #login-form {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .tip-input {
+        font-size: 14px !important;
+        color: #7b7b7b !important;
+    }
+    label {
+        font-size: 16px;
+    }
+</style>
+<div class="full-screen-page">
+    <div class="d-flex content-left">
+        <div class="left-space">
+            <a href="/">
+                <img style="margin-top: 10px;" height="26px" width="26px" src="/static/cb-custom/images/icons/left-icon.png" />
+            </a>
         </div>
-    <% } %>
+        <div class="content">
+            <div class="mb-5 logo-container">
+                <a href="/"><img src="/static/cb-custom/images/coursebank-brand.png" height="48px" width="auto" /></a>
+            </div>
+            <div class="d-flex flex-column justify-content-center h-100">
+                <div class="js-form-feedback" aria-live="assertive" tabindex="-1">
+                </div>
 
-    <% if (!context.is_require_third_party_auth_enabled) { %>
-        <%= HtmlUtils.HTML(context.fields) %>
-
-        <button type="submit" class="action action-primary action-update js-login login-button"><%- gettext("Sign in") %></button>
-    <% } %>
-
-    <% if ( context.providers.length > 0 && !context.currentProvider) { %>
-    <div class="login-providers">
-        <div class="section-title lines">
-            <h3>
-                <span class="text"><%- gettext("or sign in with") %></span>
-            </h3>
-        </div>
-
-        <% _.each( context.providers, function( provider ) {
-            if ( provider.loginUrl ) { %>
-                <button type="button" class="button button-primary button-<%- provider.id %> login-provider login-<%- provider.id %>" data-provider-url="<%- provider.loginUrl %>">
-                    <div class="icon <% if ( provider.iconClass ) { %>fa <%- provider.iconClass %><% } %>" aria-hidden="true">
-                        <% if ( provider.iconImage ) { %>
-                            <img class="icon-image" src="<%- provider.iconImage %>" alt="<%- provider.name %> icon" />
+                <% // Hide SSO related messages if we are not in the SSO pipeline.  %>
+                <% if (context.enterpriseName && context.currentProvider) { %>
+                    <% if (context.pipelineUserDetails && context.pipelineUserDetails.email) { %>
+                        <h2><%- gettext("Sign in to continue learning as {email}").replace("{email}", context.pipelineUserDetails.email) %></h2>
+                    <% } else { %>
+                        <h2><%- gettext("Sign in to continue learning") %></h2>
+                    <% } %>
+                    <p>
+                        <%- gettext("You already have an edX account with your {enterprise_name} email address.").replace(/{enterprise_name}/g, context.enterpriseName) %>
+                        <% if (context.syncLearnerProfileData) {
+                            %><%- gettext("Going forward, your account information will be updated and maintained by {enterprise_name}.").replace(/{enterprise_name}/g, context.enterpriseName) %>
                         <% } %>
+                        <%- gettext("You can view your information or unlink from {enterprise_name} anytime in your Account Settings.").replace(/{enterprise_name}/g, context.enterpriseName) %>
+                    </p>
+                    <p><%- gettext("To continue learning with this account, sign in below.") %></p>
+                <% } else if (!context.is_require_third_party_auth_enabled) { %>
+                    <h2>Sign In</h2>
+                    <small>Learn on your own time from our top industry partners </small>
+                <% } %>
+                <form id="login" class="login-form pt-4 col-12 col-xl-7" tabindex="-1" method="POST">
+                    <p class="sr">
+                        <% if ( context.providers.length > 0 && !context.currentProvider || context.hasSecondaryProviders ) { %>
+                            <%- gettext("Sign in here using your email address and password, or use one of the providers listed below.") %>
+                        <% } else { %>
+                            <%- gettext("Sign in here using your email address and password.") %>
+                        <% } %>
+                        <%- gettext("If you do not yet have an account, use the button below to register.") %>
+                    </p>
+
+                    <% if ( context.hasSecondaryProviders ) { %>
+                        <button type="button" class="button-secondary-login form-toggle" data-type="institution_login">
+                            <%- gettext("Use my university info") %>
+                        </button>
+
+                        <div class="section-title lines">
+                            <h3>
+                                <span class="text"><%- gettext("or sign in with") %></span>
+                            </h3>
+                        </div>
+                    <% } %>
+
+                    <% if (!context.is_require_third_party_auth_enabled) { %>
+                        <%= HtmlUtils.HTML(context.fields) %>
+
+                        <div class="d-flex w-100 mt-3">
+                            <button type="submit" id="submitBtn" class="btn btn-primary w-100 action action-primary action-update js-login login-button">Login</button>
+                        </div>
+                    <% } %>
+
+                    <% if ( context.providers.length > 0 && !context.currentProvider) { %>
+                    <div class="login-providers">
+                        <div class="section-title lines">
+                            <h3>
+                                <span class="text"><%- gettext("or sign in with") %></span>
+                            </h3>
+                        </div>
+
+                        <% _.each( context.providers, function( provider ) {
+                            if ( provider.loginUrl ) { %>
+                                <button type="button" class="button button-primary button-<%- provider.id %> login-provider login-<%- provider.id %>" data-provider-url="<%- provider.loginUrl %>">
+                                    <div class="icon <% if ( provider.iconClass ) { %>fa <%- provider.iconClass %><% } %>" aria-hidden="true">
+                                        <% if ( provider.iconImage ) { %>
+                                            <img class="icon-image" src="<%- provider.iconImage %>" alt="<%- provider.name %> icon" />
+                                        <% } %>
+                                    </div>
+                                    <span aria-hidden="true"><%- provider.name %></span>
+                                    <span class="sr"><%- _.sprintf( gettext("Sign in with %(providerName)s"), {providerName: provider.name} ) %></span>
+                                </button>
+                            <% }
+                        }); %>
                     </div>
-                    <span aria-hidden="true"><%- provider.name %></span>
-                    <span class="sr"><%- _.sprintf( gettext("Sign in with %(providerName)s"), {providerName: provider.name} ) %></span>
-                </button>
-            <% }
-        }); %>
+                    <% } %>
+                    <p class="text-center mt-5" style="font-size:15px;">
+                        <span class="text"><%- edx.StringUtils.interpolate(gettext('New to {platformName} ?'), {platformName: context.platformName }) %></span>
+                        <a href="/register?next=%2F">Sign Up</a>
+                    </p>
+                </form>
+            </div>
+
+        </div>
     </div>
-    <% } %>
-</form>
+    <div class="content-right bg2">
+        <div class="col-12 col-xl-6 h-100">
+            <div class=" d-flex flex-column h-100">
+                <h1 class="mb-4" style="color:white;">Welcome Back!</h1>
+                <h5 class="mb-3" style="color:white;">Mauris euismod aliquet dui, a hendrerit.</h5>
+                <p>Phasellus pretium mattis risus non interdum. Morbi tortor orci, tempor vel maximus nec, ultricies
+                    quis
+                    felis. Pellentesque consequat eu dolor.</p>
+                <div class="mt-auto">
+                    <div class="footer-socials order-lg-1 order-0 mb-3">
+                        <img height="32px" width="32px" src="/static/cb-custom/images/social/facebook.png">
+                        <img height="32px" width="32px" src="/static/cb-custom/images/social/instagram.png">
+                        <img height="32px" width="32px" src="/static/cb-custom/images/social/twitter.png">
+                    </div>
+                    <p>© Copyright 2023 Coursebank. All rights reserved.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.sticky-whole-nav').remove();
+    });
+</script>

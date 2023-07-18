@@ -589,9 +589,12 @@ from openedx.core.djangolib.markup import HTML, Text
   </div>
   <%include file="subscribe.html" />
 
-  <script src="/js/scripts.js"></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="${static.url('js/jquery-3.1.1.min.js')}"></script>
+  <script src="${static.url('js/popper.min.js')}"></script>
+  <script src="${static.url('js/bootstrap.bundle.min.js')}"></script>
+  <script type="text/javascript" src="${static.url('js/slick.min.js')}"></script>
+
+  <script src="./js/scripts.js"></script>
   <script>
     $(document).ready(function () {
       $(".testimonial-slider").slick({
@@ -653,40 +656,6 @@ from openedx.core.djangolib.markup import HTML, Text
       $(".testi-slider-prev").click(function () {
         $(".testimonial-slider").slick("slickPrev");
       });
-
-      $(document).ready(function () {
-        $(".partner-slider").slick({
-          dots: false,
-          infinite: true,
-          speed: 300,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          prevArrow: false,
-          nextArrow: false,
-          // variableWidth: true,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-              },
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              },
-            },
-          ],
-        });
-        $(".partner-slider-next").click(function () {
-          $(".tartner-slider").slick("slickNext");
-        });
-        $(".partner-slider-prev").click(function () {
-          $(".partner-slider").slick("slickPrev");
-        });
 
       var coursesDataState;
 
@@ -780,6 +749,8 @@ from openedx.core.djangolib.markup import HTML, Text
         '<h2 class="course-title">Coursebank</h2>' +
         '</div>' +
         '<p class="course-description mt-2 pb-3">' + data.title + '</p>' +
+        '<div class="course-start">Class Starts:</div>' +
+        '<span class="course-start-date">May 1, 2023</span>' +
         '</div>' +
         '</div>' +
         '</a>' +

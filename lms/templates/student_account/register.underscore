@@ -1,0 +1,197 @@
+<style>
+    .login-register-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .login-register  {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+    }
+    .form-type {
+        max-width: initial !important;
+        min-width: auto !important;
+        margin: 0 auto !important;
+    }
+    .btn-primary {
+        background: #3aa8a1 !important;
+        background-color: #3aa8a1 !important;
+    }
+    input[type=text] {
+        height: 48px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.375rem !important;
+        background: white !important;
+        margin-top: 8px !important;
+    }
+    input[type=email] {
+        height: 48px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.375rem !important;
+        background: white !important;
+        margin-top: 8px !important;
+    }
+    input[type=password] {
+        height: 48px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.375rem !important;
+        background: white !important;
+        margin-top: 8px !important;
+    }
+    select {
+        height: 48px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.375rem !important;
+        background: white !important;
+        margin-top: 8px !important;
+    }
+    #login-form {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #register-form {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .tip-input {
+        font-size: 14px !important;
+        color: #7b7b7b !important;
+    }
+    label {
+        font-size: 16px;
+    }
+    label.focus-out {
+        padding: 0 !important;
+        position: initial !important;
+        opacity: 1 !important;
+    }
+    .label-required {
+        display: none !important;
+    }
+    .label-text-small {
+        font-size: 16px !important;
+    }
+</style>
+<div class="full-screen-page">
+    <div class="d-flex content-left">
+        <div class="left-space">
+            <a href="/">
+                <img style="margin-top: 10px;" height="26px" width="26px" src="/static/cb-custom/images/icons/left-icon.png" />
+            </a>
+        </div>
+        <div class="content">
+            <div class="mb-5 logo-container">
+                <a href="/"><img src="/static/cb-custom/images/coursebank-brand.png" height="48px" width="auto" /></a>
+            </div>
+            <div class="d-flex flex-column justify-content-center h-100">
+                <div class="js-form-feedback" aria-live="assertive" tabindex="-1">
+                </div>
+
+                <form id="register" class="register-form col-12 col-xl-7" autocomplete="off" tabindex="-1" method="POST">
+
+                    <% if (!context.currentProvider) { %>
+                        <% if (context.providers.length > 0 || context.hasSecondaryProviders) { %>
+                            <div class="login-providers">
+                                <div class="section-title lines">
+                                    <h3>
+                                        <span class="text"><%- gettext("Create an account using") %></span>
+                                    </h3>
+                                </div>
+                                <%
+                                _.each( context.providers, function( provider) {
+                                    if ( provider.registerUrl ) { %>
+                                        <button type="button" class="button button-primary button-<%- provider.id %> login-provider register-<%- provider.id %>" data-provider-url="<%- provider.registerUrl %>">
+                                            <div class="icon <% if ( provider.iconClass ) { %>fa <%- provider.iconClass %><% } %>" aria-hidden="true">
+                                                <% if ( provider.iconImage ) { %>
+                                                    <img class="icon-image" src="<%- provider.iconImage %>" alt="<%- provider.name %> icon" />
+                                                <% } %>
+                                            </div>
+                                            <span aria-hidden="true"><%- provider.name %></span>
+                                            <span class="sr"><%- _.sprintf( gettext("Create account using %(providerName)s."), {providerName: provider.name} ) %></span>
+                                        </button>
+                                <%  }
+                                }); %>
+
+                                <% if ( context.hasSecondaryProviders ) { %>
+                                    <button type="button" class="button-secondary-login form-toggle" data-type="institution_login">
+                                        <%- gettext("Use my institution/campus credentials") %>
+                                    </button>
+                                <% } %>
+                            </div>
+                            <% if (!context.is_require_third_party_auth_enabled) { %>
+                                <div class="section-title lines">
+                                    <h3>
+                                        <span class="text"><%- gettext("or create a new one here") %></span>
+                                    </h3>
+                                </div>
+                            <% } %>
+                        <% } else if (!context.is_require_third_party_auth_enabled) { %>
+                            <h2>Sign Up</h2>
+                            <small>Learn on your own time from our top industry partners </small>
+                        <% } %>
+                    <% } else if (context.autoRegisterWelcomeMessage) { %>
+                        <span class="auto-register-message"><%- context.autoRegisterWelcomeMessage %></span>
+                    <% } %>
+
+                    <div class="form-fields <% if (context.is_require_third_party_auth_enabled) { %>hidden<% } %>">
+                        <%= context.fields /* xss-lint: disable=underscore-not-escaped */ %>
+
+                        <div class="form-field checkbox-optional_fields_toggle">
+                            <input type="checkbox" id="toggle_optional_fields" class="input-block checkbox"">
+                            <label for="toggle_optional_fields">
+                                <span class="label-text-small">
+                                    <%- gettext("Support education research by providing additional information") %>
+                                </span>
+                            </label>
+                        </div>
+                        <p class="mt-2">
+                            By creating an account, you agree to the <u>Terms of Service and Honor Code</u> and you
+                            acknowledge
+                            that Coursebank and each Member process your personal data in accordance with the
+                            <u>Privacy Policy.</u>
+                        </p>
+                         <div class="d-flex w-100 mt-3">
+                            <button type="submit" class="btn-primary w-100 action action-primary action-update js-register register-button">
+                                <% if ( context.registerFormSubmitButtonText ) { %><%- context.registerFormSubmitButtonText %><% } else { %><%- gettext("Create Account") %><% } %>
+                            </button>
+                        </div>
+                        <% if (!context.syncLearnerProfileData) { %>
+                            <p class="text-center mt-5" style="font-size:15px;">
+                                <span class="text"><%- edx.StringUtils.interpolate(gettext('Already in {platformName} account?'), {platformName: context.platformName }) %></span>
+                                <a href="#login" class="form-toggle" data-type="login"><%- gettext("Sign in.") %></a>
+                            </p>
+                        <% } %>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="content-right bg">
+        <div class="col-12 col-xl-6 h-100">
+            <div class=" d-flex flex-column h-100">
+                <h1 class="mb-4" style="color:white;">Join Coursebank</h1>
+                <h5 class="mb-3" style="color:white;">Mauris euismod aliquet dui, a hendrerit.</h5>
+                <p>Phasellus pretium mattis risus non interdum. Morbi tortor orci, tempor vel maximus nec, ultricies
+                    quis
+                    felis. Pellentesque consequat eu dolor.</p>
+                <div class="mt-auto">
+                    <div class="footer-socials order-lg-1 order-0 mb-3">
+                        <img height="32px" width="32px" src="/static/cb-custom/images/social/facebook.png">
+                        <img height="32px" width="32px" src="/static/cb-custom/images/social/instagram.png">
+                        <img height="32px" width="32px" src="/static/cb-custom/images/social/twitter.png">
+                    </div>
+                    <p>© Copyright 2023 Coursebank. All rights reserved.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.sticky-whole-nav').remove();
+    });
+</script>
