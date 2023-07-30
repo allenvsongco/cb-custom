@@ -511,7 +511,7 @@ from openedx.core.djangolib.markup import HTML, Text
           <div class="swiper-wrapper">
             
         <div class="swiper-slide">
-                <div class="partner-item col-12 col-md-4 col-lg-2">
+                <div class="partner-item">
                   <a href="https://thecentre.ph//">
                     <div class="d-flex justify-content-center bg-white">
                       <img height="133px" width="160px" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/partners/centre-nobg.png" />
@@ -521,7 +521,7 @@ from openedx.core.djangolib.markup import HTML, Text
          </div>
       
             <div class="swiper-slide">
-        <div class="partner-item col-12 col-md-4 col-lg-2">
+        <div class="partner-item">
                   <a href="https://www.dict.gov.ph/">
                   <div class="d-flex justify-content-center bg-white">
                     <img height="133px" width="160px" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/DICT-Logo-nobg.png" />
@@ -532,7 +532,7 @@ from openedx.core.djangolib.markup import HTML, Text
       
       
             <div class="swiper-slide">
-                <div class="partner-item col-12 col-md-4 col-lg-2">
+                <div class="partner-item">
                   <a href="https://www.dost.gov.ph/">
                     <div class="d-flex justify-content-center bg-white">
                       <img height="133px" width="90px" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/DOST.png" />
@@ -542,7 +542,7 @@ from openedx.core.djangolib.markup import HTML, Text
             </div>
       
             <div class="swiper-slide">
-                <div class="partner-item col-12 col-md-4 col-lg-2">
+                <div class="partner-item">
                   <a href="https://www.sosajbph.com/">
                     <div class="d-flex justify-content-center bg-white">
                       <img height="133px" width="auto" src="${static.url('images/partners/pdat.png')}" />
@@ -552,7 +552,7 @@ from openedx.core.djangolib.markup import HTML, Text
             </div>
       
             <div class="swiper-slide">
-                <div class="partner-item col-12 col-md-4 col-lg-2">
+                <div class="partner-item">
                   <a href="https://adarna.com.ph/">
                     <div class="d-flex justify-content-center bg-white">
                       <img height="133px" width="auto" src="${static.url('images/partners/ah.png')}" />
@@ -562,7 +562,7 @@ from openedx.core.djangolib.markup import HTML, Text
             </div>
       
        <div class="swiper-slide">
-                <div class="partner-item col-12 col-md-4 col-lg-2">
+                <div class="partner-item">
                   <a href="#">
                     <div class="d-flex justify-content-center bg-white">
                       <img height="133px" width="auto" src="${static.url('images/partners/malacanang.png')}" />
@@ -572,7 +572,7 @@ from openedx.core.djangolib.markup import HTML, Text
       </div>
       
        <div class="swiper-slide">
-                <div class="partner-item col-12 col-md-4 col-lg-2">
+                <div class="partner-item">
                   <a href="#">
                     <div class="d-flex justify-content-center bg-white">
                       <img height="133px" width="auto" src="${static.url('images/partners/rc.png')}" />
@@ -582,7 +582,7 @@ from openedx.core.djangolib.markup import HTML, Text
       </div>
       
        <div class="swiper-slide">
-      <div class="partner-item col-12 col-md-4 col-lg-2">
+      <div class="partner-item">
                   <a href="https://www.iacademy.edu.ph/">
                     <div class="d-flex justify-content-center bg-white">
                       <img height="133px" width="auto" src="${static.url('images/partners/iacademy.png')}" />
@@ -592,7 +592,7 @@ from openedx.core.djangolib.markup import HTML, Text
       </div>
       
        <div class="swiper-slide">
-           <div class="partner-item col-12 col-md-4 col-lg-2">
+           <div class="partner-item">
                   <a href="https://www.dap.edu.ph/">
                     <div class="d-flex justify-content-center bg-white">
                       <img height="133px" width="auto" src="${static.url('images/partners/dap.png')}" />
@@ -602,11 +602,11 @@ from openedx.core.djangolib.markup import HTML, Text
           </div>
       
           </div>
-          <div class="swiper-button-next slideBtn"></div>
-          <div class="swiper-button-prev slideBtn"></div>
-          <div class="swiper-pagination slideBtn"></div>
         </div>
 
+        <div class="swiper-button-next slideBtn"></div>
+        <div class="swiper-button-prev slideBtn"></div>
+        <div class="swiper-pagination slideBtn"></div>
       </section>
     </div>
   </div>
@@ -622,7 +622,7 @@ from openedx.core.djangolib.markup import HTML, Text
   <script>
     var swiper = new Swiper(".mySwiper", {
       spaceBetween: 30,
-      slidesPerView: 4,
+      slidesPerView: 5,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
