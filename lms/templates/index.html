@@ -706,6 +706,17 @@ from openedx.core.djangolib.markup import HTML, Text %>
     </section>
   </div>
 </div>
+
+<div class="contained-wrapper pt-6 pb-6">
+  <section class="section-blogs-container">
+    <div class="section-header d-flex align-items-center">
+      <h3 class="section-title me-auto">Latest Blogs</h3>
+    </div>
+    <div class="row mt-1 gutter-2rem blog-list">
+    </div>
+  </section>
+</div>
+
 <%include file="subscribe.html" />
 
 <script src="/js/scripts.js"></script>
@@ -933,6 +944,43 @@ from openedx.core.djangolib.markup import HTML, Text %>
       "</div>"
     );
   };
+
+  var fetchBlogs = function (data) {
+      $.ajax({
+        url: "https://blog.coursebank.ph/wp-json/wp/v2/posts?per_page=3&order=desc",
+        success: function (data) {
+          let blogsData = data;
+
+          blogsData.forEach(async (blog) => {
+            let image = await $.ajax({
+              url: "https://blog.coursebank.ph/wp-json/wp/v2/media/" + blog.featured_media
+            })
+            $('.blog-list').append(generateBlogs(blog, image));
+          });
+        },
+        error: function (xhr, status, error) {
+          console.log(error);
+        }
+      })
+    }();
+
+    var generateBlogs = function (data, image) {
+
+      return '<div class="col-12 col-md-6 col-lg-4">' +
+        '<a href="' + data.link + '">' +
+        '<div class="item-container">' +
+        '<img height="auto" width="100%" src="' + image.source_url + '" />' +
+        '<div class="details-container border-none">' +
+        '<div class="d-flex flex-column">' +
+        '<h2 class="item-title">' + data.title.rendered + '</h2>' +
+        '<p class="mt-2"></p>' +
+        '<a href="' + data.link + '" class="mt-1">Read More</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</a>' +
+        '</div>';
+    }
 
   // $('#subscribe').click(function(e){
   //   e.preventDefault();

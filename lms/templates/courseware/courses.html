@@ -50,6 +50,7 @@
                             </div>
                         </li>
                     </ul>
+                    <span class="btn-show show-more-subject">Show more</span>
                 </div>
                 <div class="side-menus">
                     <h5 class="mt-5">Skills</h5>
@@ -87,6 +88,7 @@
                             </div>
                         </li>
                     </ul>
+                    <span class="btn-show show-more-skills">Show more</span>
                 </div>
                 <div class="side-menus">
                     <h5 class="mt-5">Organizations</h5>
@@ -124,6 +126,7 @@
                             </div>
                         </li>
                     </ul>
+                    <span class="btn-show show-more-organization">Show more</span>
                 </div>
             </div>
             <div class="col-9">
@@ -299,15 +302,38 @@
     var organizationFilter = [];
 
     $(document).ready(function () {
+        $('.show-more-subject').click(function () {
+            subjectFilter.slice(4).forEach((subject) => {
+                $('.subject-filters').append(generateFilters(subject.name, subject.slug));
+            });
+            $(this).hide();
+        });
+
+        $('.show-more-skills').click(function () {
+            skillFilter.slice(4).forEach((skill) => {
+                $('.skill-filters').append(generateFilters(skill.name, skill.slug));
+            });
+            $(this).hide();
+        });
+
+        $('.show-more-organization').click(function () {
+            organizationFilter.slice(4).forEach((org) => {
+                $('.organization-filters').append(generateFilters(org.key, org.key));
+            });
+            $(this).hide();
+        });
+
         //initialize filters
         var initFilters = function () {
             $.ajax({
                 url: "https://discovery.tmtg-clone.click/api/v1/subjects/",
                 success: function (data) {
                     let subjectFilterData = data.results;
+                    subjectFilter = data.results;
+
                     $('.subject-filters').html('');
-                    subjectFilterData.forEach((subject) => {
-                        $('.subject-filters').append(generateFilters(subject.name,subject.slug));
+                    subjectFilterData.slice(0, 4).forEach((subject) => {
+                        $('.subject-filters').append(generateFilters(subject.name, subject.slug));
                     });
                 },
                 error: function (xhr, status, error) {
@@ -318,9 +344,10 @@
                 url: "https://discovery.tmtg-clone.click/taxonomy/api/v1/skills/",
                 success: function (data) {
                     let skillFilterData = data.results;
+                    skillFilter = data.results;
                     $('.skill-filters').html('');
-                    skillFilterData.forEach((skill) => {
-                        $('.skill-filters').append(generateFilters(skill.name,skill.name));
+                    skillFilterData.slice(0, 4).forEach((skill) => {
+                        $('.skill-filters').append(generateFilters(skill.name, skill.name));
                     });
                 },
                 error: function (xhr, status, error) {
@@ -331,9 +358,10 @@
                 url: "https://discovery.tmtg-clone.click/api/v1/organizations/",
                 success: function (data) {
                     let organizationFilterData = data.results;
+                    organizationFilter = data.results;
                     $('.organization-filters').html('');
-                    organizationFilterData.forEach((org) => {
-                        $('.organization-filters').append(generateFilters(org.key,org.key));
+                    organizationFilterData.slice(0, 4).forEach((org) => {
+                        $('.organization-filters').append(generateFilters(org.key, org.key));
                     });
                 },
                 error: function (xhr, status, error) {
