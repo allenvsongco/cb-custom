@@ -301,23 +301,27 @@
     var skillFilter = [];
     var organizationFilter = [];
 
+    var subjectFilterData = [];
+    var skillFilterData = [];
+    var organizationFilterData = [];
+
     $(document).ready(function () {
         $('.show-more-subject').click(function () {
-            subjectFilter.slice(4).forEach((subject) => {
+            subjectFilterData.slice(4).forEach((subject) => {
                 $('.subject-filters').append(generateFilters(subject.name, subject.slug));
             });
             $(this).hide();
         });
 
         $('.show-more-skills').click(function () {
-            skillFilter.slice(4).forEach((skill) => {
+            skillFilterData.slice(4).forEach((skill) => {
                 $('.skill-filters').append(generateFilters(skill.name, skill.slug));
             });
             $(this).hide();
         });
 
         $('.show-more-organization').click(function () {
-            organizationFilter.slice(4).forEach((org) => {
+            organizationFilterData.slice(4).forEach((org) => {
                 $('.organization-filters').append(generateFilters(org.key, org.key));
             });
             $(this).hide();
@@ -328,8 +332,7 @@
             $.ajax({
                 url: "https://discovery.tmtg-clone.click/api/v1/subjects/",
                 success: function (data) {
-                    let subjectFilterData = data.results;
-                    subjectFilter = data.results;
+                    subjectFilterData = data.results;
 
                     $('.subject-filters').html('');
                     subjectFilterData.slice(0, 4).forEach((subject) => {
@@ -343,8 +346,7 @@
             $.ajax({
                 url: "https://discovery.tmtg-clone.click/taxonomy/api/v1/skills/",
                 success: function (data) {
-                    let skillFilterData = data.results;
-                    skillFilter = data.results;
+                    skillFilterData = data.results;
                     $('.skill-filters').html('');
                     skillFilterData.slice(0, 4).forEach((skill) => {
                         $('.skill-filters').append(generateFilters(skill.name, skill.name));
@@ -357,8 +359,7 @@
             $.ajax({
                 url: "https://discovery.tmtg-clone.click/api/v1/organizations/",
                 success: function (data) {
-                    let organizationFilterData = data.results;
-                    organizationFilter = data.results;
+                    organizationFilterData = data.results;
                     $('.organization-filters').html('');
                     organizationFilterData.slice(0, 4).forEach((org) => {
                         $('.organization-filters').append(generateFilters(org.key, org.key));
@@ -404,13 +405,23 @@
             currentPage = 1;
             fetchCourseWithFilter();
         });
+
         var itemsPerPage = 20;
         var numItems = 0;
-        var urlParams = new URLSearchParams(window.location.search);
+        const urlParams = new URLSearchParams(window.location.search);
         var currentPage = urlParams.get('page');
+        const q = urlParams.get('q');
+        const subjects = urlParams.get('subjects');
+        const skills = urlParams.get('skills');
+        const organizations = urlParams.get('organizations');
+
         var offsetSize = 0;
         // if (currentPage) {
         //     offsetSize = currentPage * itemsPerPage;
+        // }
+
+        // if(q){
+        //     $(".search-input").val(q);
         // }
 
         $(".search-input").on('keyup', function (e) {
@@ -421,12 +432,12 @@
         });
 
         var fetchCourseWithFilter = function () {
-            if(currentPage != 1 && currentPage !=null){
+            if (currentPage != 1 && currentPage != null) {
                 offsetSize = currentPage * itemsPerPage - 20;
             } else {
                 offsetSize = 0;
             }
-        
+
             numItems = 0;
             var searchQuery = $('.search-input').val();
             let subjectStrings = "";
@@ -454,13 +465,13 @@
                 }
             });
             $.ajax({
-                url: "https://discovery.tmtg-clone.click/api/v1/courses/?offset=" + offsetSize + "&q="+ searchQuery +"&subjects=" + encodeURIComponent(subjectStrings) + "&skills=" + encodeURIComponent(skillStrings) + "&organizations=" + encodeURIComponent(organizationStrings) + "",
+                url: "https://discovery.tmtg-clone.click/api/v1/courses/?offset=" + offsetSize + "&q=" + searchQuery + "&subjects=" + encodeURIComponent(subjectStrings) + "&skills=" + encodeURIComponent(skillStrings) + "&organizations=" + encodeURIComponent(organizationStrings) + "",
                 // url: "https://648a779a17f1536d65e925f9.mockapi.io/test",
                 success: function (data) {
                     $('.courses-list-container').html('');
                     $('#resultCount').html(data.count);
-                    if(searchQuery!=""){
-                        $('#query-search').html("for “"+searchQuery+"”");
+                    if (searchQuery != "") {
+                        $('#query-search').html("for “" + searchQuery + "”");
                     } else {
                         $('#query-search').html("");
                     }
@@ -478,31 +489,31 @@
                     $('.prev').html('');
                     $('.next').html('');
                     $(".course-pagination-list").html('');
-                    $('.prev').html('<a class="page-link" href="?page='+ (currpage - 1) +'">Previous</a>');
-                    $('.next').html('<a class="page-link" href="?page='+ (currpage + 1) +'">Next</a>');
+                    $('.prev').html('<a class="page-link" href="?page=' + (currpage - 1) + '">Previous</a>');
+                    $('.next').html('<a class="page-link" href="?page=' + (currpage + 1) + '">Next</a>');
 
-                    if(numPages == currentPage){
+                    if (numPages == currentPage) {
                         $('.next').addClass("disabled");
                     }
 
-                    if(numPages == 1){
+                    if (numPages == 1) {
                         $('.prev').addClass("disabled");
                     }
 
-                    if(numItems == 0){
+                    if (numItems == 0) {
                         $('.pagination').hide();
                     } else {
                         $('.pagination').show();
                     }
-                    var queryParams = "&q="+ searchQuery +"&subjects=" + encodeURIComponent(subjectStrings) + "&skills=" + encodeURIComponent(skillStrings) + "&organizations=" + encodeURIComponent(organizationStrings);
+                    var queryParams = "&q=" + searchQuery + "&subjects=" + encodeURIComponent(subjectStrings) + "&skills=" + encodeURIComponent(skillStrings) + "&organizations=" + encodeURIComponent(organizationStrings);
                     for (var i = 1; i <= numPages; i++) {
                         if (currentPage == i) {
-                            var $link = '<li class="page-item active" aria-current="page"><span class="page-link">'+i+'</span></li>';
+                            var $link = '<li class="page-item active" aria-current="page"><span class="page-link">' + i + '</span></li>';
                         } else {
-                            if(currentPage == null && i == 1){
-                                var $link = '<li class="page-item active" aria-current="page"><span class="page-link">'+i+'</span></li>';
+                            if (currentPage == null && i == 1) {
+                                var $link = '<li class="page-item active" aria-current="page"><span class="page-link">' + i + '</span></li>';
                             } else {
-                                var $link = '<li class="page-item"><a class="page-link change-page" data-page-num="'+i+'" href="#">'+i+'</a></li>';
+                                var $link = '<li class="page-item"><a class="page-link change-page" data-page-num="' + i + '" href="#">' + i + '</a></li>';
                             }
                         }
                         $(".course-pagination-list").append($link);
@@ -514,17 +525,18 @@
             })
         }
         fetchCourseWithFilter();
-        $('.course-pagination-list').on('click','.change-page',function(){
+        $('.course-pagination-list').on('click', '.change-page', function () {
             currentPage = $(this).attr('data-page-num');
             fetchCourseWithFilter();
         });
+
         var generateCoursesHtml = function (data) {
             let courseBadge = "";
             if (data && data.topics && data.topics[0]) {
                 courseBadge = '<div class="category-badge" style="background-color: #387aa6">' + data.topics[0] + '</div>';
             }
             return '<div id="' + data.canonical_course_run_key + '" class="col-12 col-md-6 col-lg-4 course-item-container">' +
-                '<a href="/courses/' + data.canonical_course_run_key + '">' +
+                '<a href="/courses/' + data.canonical_course_run_key + '/about">' +
                 '<div class="course-item">' +
                 courseBadge +
                 '<img height="auto" width="100%" src="' + data.card_image_url + '" alt="' + data.title + '">' +
@@ -534,15 +546,15 @@
                 '<h2 class="course-title">Coursebank</h2>' +
                 '</div>' +
                 '<p class="course-description mt-2 pb-3">' + data.title + '</p>' +
-                // '<div class="course-start">Class Starts:</div>' +
-                // '<span class="course-start-date">May 1, 2023</span>' +
+                '<div class="course-start">Class Starts:</div>' +
+                '<span class="course-start-date">May 1, 2023</span>' +
                 '</div>' +
                 '</div>' +
                 '</a>' +
                 '</div>'
         }
 
-        var generateFilters = function (name,value) {
+        var generateFilters = function (name, value) {
             return '<li>' +
                 '<div class="form-check">' +
                 '<input class="form-check-input" type="checkbox" value="' + value + '">' +
