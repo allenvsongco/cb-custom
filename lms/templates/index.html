@@ -966,7 +966,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
       });
     };
     fetchCourseWithFilter("?ordering=-published_at");
-    $(".btn-filter-course[data-key='ordering=-published_at']").click();
+    $(".btn-filter-course[data-key='ordering=-published_at']").trigger('click');
   });
 
   var generateCoursesHtml = function (data) {
