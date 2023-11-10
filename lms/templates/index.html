@@ -966,6 +966,11 @@ from openedx.core.djangolib.markup import HTML, Text %>
       });
     };
     fetchCourseWithFilter("?ordering=-published_at");
+    $(document).ready(function () {
+      $('.btn-filter-course').click(function () {
+          let filterKey = $(this).data('key');
+          fetchCourseWithFilter(filterKey);
+      });
   });
 
   var generateCoursesHtml = function (data) {
