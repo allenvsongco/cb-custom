@@ -429,6 +429,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
           <h3 class="section-title me-auto">Special Programs</h3>
         </div>
         <div class="row mt-1 gutter-2rem programs-list">
+          
           <div class="col-12 col-md-6 col-lg-4">
             <a href="/lakip"></a>
             <div class="item-container">
@@ -449,6 +450,49 @@ from openedx.core.djangolib.markup import HTML, Text %>
               </div>
             </div>
           </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <a href="https://dict.coursebank.ph/ict-upskilling/"></a>
+            <div class="item-container">
+              <a href="https://dict.coursebank.ph/ict-upskilling/">
+                <img height="auto" width="100%" src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/spiral_ict_model-768x415.jpg">
+              </a>
+              <div class="details-container border-none">
+                <a href="https://dict.coursebank.ph/ict-upskilling/"></a>
+                <div class="d-flex flex-column p-3">
+                  <a href="https://dict.coursebank.ph/ict-upskilling/">
+                    <h2 class="item-title">ICT Upskilling</h2>
+                    <p class="mt-2">Enhancing ICT Upskilling Ecosystem through MOOCs</p>
+                  </a>
+                  <a href="https://dict.coursebank.ph/ict-upskilling/" class="mt-1">
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <a href="https://dict.coursebank.ph/djph/"></a>
+            <div class="item-container">
+              <a href="https://dict.coursebank.ph/djph/">
+                <img height="auto" width="100%" src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/mspiral_djph_model-768x417.jpg">
+              </a>
+              <div class="details-container border-none">
+                <a href="https://dict.coursebank.ph/djph/"></a>
+                <div class="d-flex flex-column p-3">
+                  <a href="https://dict.coursebank.ph/djph/">
+                    <h2 class="item-title">Digital Jobs PH</h2>
+                    <p class="mt-2">Scaling DICT's Digital Jobs PH Offering through MOOCs</p>
+                  </a>
+                  <a href="https://dict.coursebank.ph/djph/" class="mt-1">
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
@@ -606,11 +650,12 @@ from openedx.core.djangolib.markup import HTML, Text %>
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="partner-item">
-              <a href="https://thecentre.ph//">
+              <a href="https://thecentre.ph/">
                 <div class="d-flex justify-content-center bg-white">
                   <img
                     height="133px"
                     width="160px"
+                    class="partner-carousel-img"
                     src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/partners/centre-nobg.png"
                   />
                 </div>
@@ -625,6 +670,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
                   <img
                     height="133px"
                     width="160px"
+                    class="partner-carousel-img"
                     src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/DICT-Logo-nobg.png"
                   />
                 </div>
@@ -639,6 +685,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
                   <img
                     height="133px"
                     width="90px"
+                    class="partner-carousel-img"
                     src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/DOST.png"
                   />
                 </div>
@@ -653,6 +700,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
                   <img
                     height="133px"
                     width="auto"
+                    class="partner-carousel-img"
                     src="${static.url('images/partners/pdat.png')}"
                   />
                 </div>
@@ -667,6 +715,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
                   <img
                     height="133px"
                     width="auto"
+                    class="partner-carousel-img"
                     src="${static.url('images/partners/ah.png')}"
                   />
                 </div>
@@ -681,6 +730,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
                   <img
                     height="133px"
                     width="auto"
+                    class="partner-carousel-img"
                     src="${static.url('images/partners/malacanang.png')}"
                   />
                 </div>
@@ -695,6 +745,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
                   <img
                     height="133px"
                     width="auto"
+                    class="partner-carousel-img"
                     src="${static.url('images/partners/rc.png')}"
                   />
                 </div>
@@ -709,6 +760,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
                   <img
                     height="133px"
                     width="auto"
+                    class="partner-carousel-img"
                     src="${static.url('images/partners/iacademy.png')}"
                   />
                 </div>
@@ -723,6 +775,7 @@ from openedx.core.djangolib.markup import HTML, Text %>
                   <img
                     height="133px"
                     width="auto"
+                    class="partner-carousel-img"
                     src="${static.url('images/partners/dap.png')}"
                   />
                 </div>
@@ -1043,5 +1096,23 @@ from openedx.core.djangolib.markup import HTML, Text %>
   }
   .swiper-pagination-bullet-active{
     background-color: #3aa8a1 !important;
+  }
+  @media (max-width: 768px) {
+    .swiper {
+      padding: 2rem; /* Adjust padding for smaller screens */
+    }
+
+    .swiper-slide {
+      text-align: center; /* Center align the content */
+    }
+
+    .partner-item {
+      margin: 0 1rem; /* Add some horizontal spacing between partner items */
+    }
+
+    img.partner-carousel-img {
+      max-width: 100%; /* Make images responsive within their containers */
+      height: auto; /* Allow images to maintain their aspect ratio */
+    }
   }
 </style>
