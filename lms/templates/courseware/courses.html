@@ -538,6 +538,16 @@
 
             const ownerKey = (data.owners && data.owners.length > 0) ? data.owners[0].key : '';
             const startDate = (data.course_runs && data.course_runs.length > 0) ? data.course_runs[0].start : '';
+
+            const formatDate = (dateString) => {
+                if (!dateString) {
+                  return 'To be announced';
+                }
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const date = new Date(dateString);
+                return new Intl.DateTimeFormat('en-US', options).format(date);
+            };
+
             return '<div id="' + data.canonical_course_run_key + '" class="col-12 col-md-6 col-lg-4 course-item-container">' +
                 '<a href="/courses/' + data.canonical_course_run_key + '/about">' +
                 '<div class="course-item">' +
@@ -550,7 +560,7 @@
                 '</div>' +
                 '<p class="course-description mt-2 pb-3">' + data.title + '</p>' +
                 '<div class="course-start">Class Starts:</div>' +
-                '<span class="course-start-date">' + startDate + '</span>' +
+                '<span class="course-start-date">' + formatDate(startDate) + '</span>' +
                 '</div>' +
                 '</div>' +
                 '</a>' +
