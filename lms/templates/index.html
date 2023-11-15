@@ -1,47 +1,63 @@
-<%page expression_filter="h" />
-<%inherit file="main.html" />
-<%namespace name='static' file='static_content.html' />
-<%! 
-from django.utils.translation import gettext as _ 
-from django.urls import reverse
-from openedx.core.djangolib.markup import HTML, Text 
-%>
-  <div class="full-width-wrapper">
-    <section class="hero-banner">
-      <div class="contained-wrapper h-100">
-        <div class="d-flex align-items-center h-100">
-          <div class="col-12 col-md-6 d-flex flex-column">
-            <h1 class="hero-tagline mb-3 text-left">
-              Influence the Future, Learn Anywhere at Anytime
-            </h1>
-            <p class="sub-tag mb-4">
-              Stay ahead in your professional development. Learn new knowledge
-              and skills online.
-            </p>
-            <div class="d-flex align-items-center">
-              <a class="btn btn-secondary me-4" href="/register?next=%2F">Join our community</a>
-              <!-- <a href="#" class="text-white">It’s absolutely free!</a> -->
-            </div>
+<%page expression_filter="h" /> <%inherit file="main.html" /> 
+<%namespace name='static' file='static_content.html' /> 
+<%! from django.utils.translation import gettext as _ 
+from django.urls import reverse 
+from openedx.core.djangolib.markup import HTML, Text %>
+<div class="full-width-wrapper">
+  <section class="hero-banner">
+    <div class="contained-wrapper h-100">
+      <div class="d-flex align-items-center h-100">
+        <div class="col-12 col-md-6 d-flex flex-column">
+          <h1 class="hero-tagline mb-3 text-left">
+            Influence the Future, Learn Anywhere at Anytime
+          </h1>
+          <p class="sub-tag mb-4">
+            Stay ahead in your professional development. Learn new knowledge and
+            skills online.
+          </p>
+          <div class="d-flex align-items-center">
+            <a class="btn btn-secondary me-4" href="/register?next=%2F"
+              >Join our community</a
+            >
+            <!-- <a href="#" class="text-white">It’s absolutely free!</a> -->
           </div>
         </div>
       </div>
-    </section>
-  </div>
-  <div class="bg-light-1">
-    <div class="contained-wrapper pt-6 pb-6">
-      <section class="section-courses-container">
-        <div class="section-header d-flex align-items-center">
-          <h3 class="section-title me-auto">Courses to get you started</h3>
-          <a href="/courses" class="fw-bold">View all Courses</a>
-        </div>
-        <div class="section-tabs d-flex mt-4 pb-4">
-          <button class="btn btn-primary btn-filter-course" data-key="ordering=-published_at">Latest</button>
-          <button class="btn btn-filter-course" data-key="ordering=-enrollment_count">Most Popular</button>
-          <button class="btn btn-filter-course" data-key="ordering=-mode">Free</button>
-          <button class="btn btn-filter-course" data-key="ordering=-recent_enrollment_count">Trending</button>
-        </div>
-        <div class="row pt-3 gutter-2rem courses-list-container">
-          <!-- <div class="col-12 col-md-6 col-lg-4">
+    </div>
+  </section>
+</div>
+<div>
+  <div class="contained-wrapper pt-6 pb-6">
+    <section class="section-courses-container">
+      <div class="section-header d-flex align-items-center">
+        <h3 class="section-title me-auto">Courses to get you started</h3>
+        <a href="/courses" class="fw-bold">View all Courses</a>
+      </div>
+      <div class="section-tabs d-flex mt-4 pb-4">
+        <button
+          class="btn btn-primary btn-filter-course"
+          data-key="ordering=-published_at"
+        >
+          Latest
+        </button>
+        <button
+          class="btn btn-filter-course"
+          data-key="ordering=-enrollment_count"
+        >
+          Most Popular
+        </button>
+        <button class="btn btn-filter-course" data-key="ordering=-mode">
+          Free
+        </button>
+        <button
+          class="btn btn-filter-course"
+          data-key="ordering=-recent_enrollment_count"
+        >
+          Trending
+        </button>
+      </div>
+      <div class="row pt-3 gutter-2rem courses-list-container">
+        <!-- <div class="col-12 col-md-6 col-lg-4">
               <a href="">
                 <div class="course-item">
                   <div class="category-badge" style="background-color: #387aa6">
@@ -221,11 +237,11 @@ from openedx.core.djangolib.markup import HTML, Text
                 </div>
               </a>
             </div> -->
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
-  <!-- <div class="contained-wrapper pt-6 pb-6">
+</div>
+<!-- <div class="contained-wrapper pt-6 pb-6">
     <section class="section-platform-container">
       <div class="section-header d-flex align-items-center">
         <h3 class="section-title">
@@ -260,7 +276,7 @@ from openedx.core.djangolib.markup import HTML, Text
       </div>
     </section>
   </div> -->
-  <!-- <div class="contained-wrapper pt-6 pb-6">
+<!-- <div class="contained-wrapper pt-6 pb-6">
     <section class="section-specialization-bundle-container">
       <div class="section-header d-flex align-items-center">
         <h3 class="section-title me-auto">Specialization bundle</h3>
@@ -273,7 +289,7 @@ from openedx.core.djangolib.markup import HTML, Text
       </div>
     </section>
   </div> -->
-  <!-- <div class="bg-light-1">
+<!-- <div class="bg-light-1">
     <div class="contained-wrapper pt-6 pb-6">
       <section class="section-specialization-bundle-container">
         <div class="section-header d-flex align-items-center">
@@ -330,7 +346,7 @@ from openedx.core.djangolib.markup import HTML, Text
       </section>
     </div>
   </div> -->
-  <!-- <div class="bg-dark-1">
+<!-- <div class="bg-dark-1">
     <div class="contained-wrapper pt-6 pb-6">
       <section class="category-section">
         <div class="section-header d-flex align-items-center">
@@ -406,188 +422,343 @@ from openedx.core.djangolib.markup import HTML, Text
       </section>
     </div>
   </div> -->
-
-  <div class="contained-wrapper pt-6 pb-6">
-    <section class="section-testimonials">
-      <div class="section-header d-flex align-items-center">
-        <h3 class="section-title me-auto fw-light">
-          What our students says about coursebank
-        </h3>
-        <div class="d-flex slick-navigation">
-          <i class="bi bi-arrow-left-short testi-slider-prev"></i>
-          <i class="bi bi-arrow-right-short ms-3 testi-slider-next"></i>
-        </div>
-      </div>
-      <div class="row mt-5 gutter-2rem testimonial-slider">
-        <div class="testimonial-item col">
-          <a href="">
-            <div class="bg-light-1 p-5">
-              <p class="text-black">
-                "MOOCs helped me learn at my own pace that suits me in a more comfortably focused environment, paving the way for my course completion ahead of time."
-              </p>
-              <div class="d-flex align-items-center pt-1">
-                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/GarryVale.jpg')}" />
-                <p class="mb-0 fw-bold text-dark-1">Garry Vale</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="testimonial-item col">
-          <a href="">
-            <div class="bg-light-1 p-5">
-              <p class="text-black">
-                Coursebank is an exceptional online learning platform that has greatly revolutionized my learning experience, especially in the field of Science and Technology.
-              </p>
-              <div class="d-flex align-items-center pt-1">
-                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/MichaelTelesforo.JPG')}" />
-                <p class="mb-0 fw-bold text-dark-1">Michael Telesforo</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="testimonial-item col">
-          <a href="">
-            <div class="bg-light-1 p-5">
-              <p class="text-black">
-                Education is an ongoing pursuit that has the potential to shape our lives in profound ways. In my quest for knowledge and personal growth, I discovered Coursebank. 
-              </p>
-              <div class="d-flex align-items-center pt-1">
-                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/BrennanTerre.jpg')}" />
-                <p class="mb-0 fw-bold text-dark-1">Brennan Terre</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="testimonial-item col">
-          <a href="">
-            <div class="bg-light-1 p-5">
-              <p class="text-black">
-                Coursebank's massive open online courses (MOOCs) have been a game-changer for my data science and analytics career.
-              </p>
-              <div class="d-flex align-items-center pt-1">
-                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/WinbertJamesTeves.jpg')}" />
-                <p class="mb-0 fw-bold text-dark-1">Winbert James Teves</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="testimonial-item col">
-          <a href="">
-            <div class="bg-light-1 p-5">
-              <p class="text-black">
-                Coursebank is like a library, but for your brain. You can learn anything you want, whenever you want, and for free. It's like a buffet of knowledge, with something for everyone.
-              </p>
-              <div class="d-flex align-items-center pt-1">
-                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/JeramieJoyceCDomingo.jpg')}" />
-                <p class="mb-0 fw-bold text-dark-1">Jeramie Joyce C. Domingo - Department of Trade & Industry</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="testimonial-item col">
-          <a href="">
-            <div class="bg-light-1 p-5">
-              <p class="text-black">
-                My experience with Coursebank's massive open online courses has been excellent. The courses are well-structured and engaging, and the learning resources provided are comprehensive and helpful.
-              </p>
-              <div class="d-flex align-items-center pt-1">
-                <img style="border-radius: 50%;object-fit: cover;" class="me-2" height="52px" width="52px" src="${static.url('images/testimonial/MaeCainto.jpg')}" />
-                <p class="mb-0 fw-bold text-dark-1">Mae Cainto</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-  </div>
   <div class="bg-light-1">
     <div class="contained-wrapper pt-6 pb-6">
-      <section class="section-partners">
+      <section class="section-blogs-container">
         <div class="section-header d-flex align-items-center">
-          <h3 class="section-title me-auto">Our Partners</h3>
-          <div class="d-flex slick-navigation">
-            <i class="bi bi-arrow-left-short partner-slider-prev"></i>
-            <i class="bi bi-arrow-right-short ms-3 partner-slider-next"></i>
-          </div>
+          <h3 class="section-title me-auto">Special Programs</h3>
         </div>
-        <div class="row mt-4 gutter-2rem">
-          <div class="partner-item col-12 col-md-4 col-lg-2 partner-slider">
-            <a href="https://thecentre.ph//">
-              <div class="d-flex justify-content-center bg-white">
-                <img height="133px" width="160px" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/partners/centre-nobg.png" />
-              </div>
-            </a>
-          </div>
+        <div class="row mt-1 gutter-2rem programs-list">
           
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <a href="https://www.dict.gov.ph/">
-            <div class="d-flex justify-content-center bg-white">
-              <img height="133px" width="160px" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/DICT-Logo-nobg.png" />
+          <div class="col-12 col-md-6 col-lg-4">
+            <a href="/lakip"></a>
+            <div class="item-container">
+              <a href="/lakip">
+                <img height="auto" width="100%" src="https://blog.coursebank.ph/wp-content/uploads/sites/15/2023/07/LAKIP.jpg">
+              </a>
+              <div class="details-container border-none">
+                <a href="/lakip"></a>
+                <div class="d-flex flex-column p-3">
+                  <a href="/lakip">
+                    <h2 class="item-title">LAKIP</h2>
+                    <p class="mt-2">Localized Accessible Knowledge and Inclusive Platform</p>
+                  </a>
+                  <a href="/lakip" class="mt-1">
+                    Learn More
+                  </a>
+                </div>
+              </div>
             </div>
-            </a>
-          </div>
-        
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <a href="https://www.dost.gov.ph/">
-              <div class="d-flex justify-content-center bg-white">
-                <img height="133px" width="90px" src="https://coursebank-static-assets.s3.ap-northeast-1.amazonaws.com/DOST.png" />
-              </div>
-            </a>
-          </div>
-        
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <a href="https://www.sosajbph.com/">
-              <div class="d-flex justify-content-center bg-white">
-                <img height="133px" width="auto" src="${static.url('images/partners/pdat.png')}" />
-              </div>
-            </a>
-          </div>
-        
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <a href="https://adarna.com.ph/">
-              <div class="d-flex justify-content-center bg-white">
-                <img height="133px" width="auto" src="${static.url('images/partners/ah.png')}" />
-              </div>
-            </a>
           </div>
 
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <a href="#">
-              <div class="d-flex justify-content-center bg-white">
-                <img height="133px" width="auto" src="${static.url('images/partners/malacanang.png')}" />
+          <div class="col-12 col-md-6 col-lg-4">
+            <a href="https://dict.coursebank.ph/ict-upskilling/"></a>
+            <div class="item-container">
+              <a href="https://dict.coursebank.ph/ict-upskilling/">
+                <img height="auto" width="100%" src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/spiral_ict_model-768x415.jpg">
+              </a>
+              <div class="details-container border-none">
+                <a href="https://dict.coursebank.ph/ict-upskilling/"></a>
+                <div class="d-flex flex-column p-3">
+                  <a href="https://dict.coursebank.ph/ict-upskilling/">
+                    <h2 class="item-title">ICT Upskilling</h2>
+                    <p class="mt-2">Enhancing ICT Upskilling Ecosystem through MOOCs</p>
+                  </a>
+                  <a href="https://dict.coursebank.ph/ict-upskilling/" class="mt-1">
+                    Learn More
+                  </a>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
-        
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <a href="#">
-              <div class="d-flex justify-content-center bg-white">
-                <img height="133px" width="auto" src="${static.url('images/partners/rc.png')}" />
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <a href="https://dict.coursebank.ph/djph/"></a>
+            <div class="item-container">
+              <a href="https://dict.coursebank.ph/djph/">
+                <img height="auto" width="100%" src="https://coursebank-static-assets-tmtg.s3.ap-northeast-1.amazonaws.com/mspiral_djph_model-768x417.jpg">
+              </a>
+              <div class="details-container border-none">
+                <a href="https://dict.coursebank.ph/djph/"></a>
+                <div class="d-flex flex-column p-3">
+                  <a href="https://dict.coursebank.ph/djph/">
+                    <h2 class="item-title">Digital Jobs PH</h2>
+                    <p class="mt-2">Scaling DICT's Digital Jobs PH Offering through MOOCs</p>
+                  </a>
+                  <a href="https://dict.coursebank.ph/djph/" class="mt-1">
+                    Learn More
+                  </a>
+                </div>
               </div>
-            </a>
-          </div>
-        
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <a href="https://www.iacademy.edu.ph/">
-              <div class="d-flex justify-content-center bg-white">
-                <img height="133px" width="auto" src="${static.url('images/partners/iacademy.png')}" />
-              </div>
-            </a>
-          </div>
-        
-          <div class="partner-item col-12 col-md-4 col-lg-2">
-            <a href="https://www.dap.edu.ph/">
-              <div class="d-flex justify-content-center bg-white">
-                <img height="133px" width="auto" src="${static.url('images/partners/dap.png')}" />
-              </div>
-            </a>
+            </div>
           </div>
 
         </div>
       </section>
     </div>
   </div>
-  <%include file="subscribe.html" />
+
+<div class="contained-wrapper pt-6 pb-6">
+  <section class="section-testimonials">
+    <div class="section-header d-flex align-items-center">
+      <h3 class="section-title me-auto fw-light">
+        What our students says about coursebank
+      </h3>
+      <div class="d-flex slick-navigation">
+        <i class="bi bi-arrow-left-short testi-slider-prev"></i>
+        <i class="bi bi-arrow-right-short ms-3 testi-slider-next"></i>
+      </div>
+    </div>
+    <div class="row mt-5 gutter-2rem testimonial-slider">
+      <div class="testimonial-item col">
+        <a href="">
+          <div class="bg-light-1 p-5">
+            <p class="text-black">
+              "MOOCs helped me learn at my own pace that suits me in a more
+              comfortably focused environment, paving the way for my course
+              completion ahead of time."
+            </p>
+            <div class="d-flex align-items-center pt-1">
+              <img
+                style="border-radius: 50%; object-fit: cover"
+                class="me-2"
+                height="52px"
+                width="52px"
+                src="${static.url('images/testimonial/GarryVale.jpg')}"
+              />
+              <p class="mb-0 fw-bold text-dark-1">Garry Vale</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="testimonial-item col">
+        <a href="">
+          <div class="bg-light-1 p-5">
+            <p class="text-black">
+              Coursebank is an exceptional online learning platform that has
+              greatly revolutionized my learning experience, especially in the
+              field of Science and Technology.
+            </p>
+            <div class="d-flex align-items-center pt-1">
+              <img
+                style="border-radius: 50%; object-fit: cover"
+                class="me-2"
+                height="52px"
+                width="52px"
+                src="${static.url('images/testimonial/MichaelTelesforo.JPG')}"
+              />
+              <p class="mb-0 fw-bold text-dark-1">Michael Telesforo</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="testimonial-item col">
+        <a href="">
+          <div class="bg-light-1 p-5">
+            <p class="text-black">
+              Education is an ongoing pursuit that has the potential to shape
+              our lives in profound ways. In my quest for knowledge and personal
+              growth, I discovered Coursebank.
+            </p>
+            <div class="d-flex align-items-center pt-1">
+              <img
+                style="border-radius: 50%; object-fit: cover"
+                class="me-2"
+                height="52px"
+                width="52px"
+                src="${static.url('images/testimonial/BrennanTerre.jpg')}"
+              />
+              <p class="mb-0 fw-bold text-dark-1">Brennan Terre</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="testimonial-item col">
+        <a href="">
+          <div class="bg-light-1 p-5">
+            <p class="text-black">
+              Coursebank's massive open online courses (MOOCs) have been a
+              game-changer for my data science and analytics career.
+            </p>
+            <div class="d-flex align-items-center pt-1">
+              <img
+                style="border-radius: 50%; object-fit: cover"
+                class="me-2"
+                height="52px"
+                width="52px"
+                src="${static.url('images/testimonial/WinbertJamesTeves.jpg')}"
+              />
+              <p class="mb-0 fw-bold text-dark-1">Winbert James Teves</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="testimonial-item col">
+        <a href="">
+          <div class="bg-light-1 p-5">
+            <p class="text-black">
+              Coursebank is like a library, but for your brain. You can learn
+              anything you want, whenever you want, and for free. It's like a
+              buffet of knowledge, with something for everyone.
+            </p>
+            <div class="d-flex align-items-center pt-1">
+              <img
+                style="border-radius: 50%; object-fit: cover"
+                class="me-2"
+                height="52px"
+                width="52px"
+                src="${static.url('images/testimonial/JeramieJoyceCDomingo.jpg')}"
+              />
+              <p class="mb-0 fw-bold text-dark-1">
+                Jeramie Joyce C. Domingo - Department of Trade & Industry
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="testimonial-item col">
+        <a href="">
+          <div class="bg-light-1 p-5">
+            <p class="text-black">
+              My experience with Coursebank's massive open online courses has
+              been excellent. The courses are well-structured and engaging, and
+              the learning resources provided are comprehensive and helpful.
+            </p>
+            <div class="d-flex align-items-center pt-1">
+              <img
+                style="border-radius: 50%; object-fit: cover"
+                class="me-2"
+                height="52px"
+                width="52px"
+                src="${static.url('images/testimonial/MaeCainto.jpg')}"
+              />
+              <p class="mb-0 fw-bold text-dark-1">Mae Cainto</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="bg-light-1">
+  <div class="contained-wrapper pt-6 pb-6">
+    <div class="section-header d-flex align-items-center pb-3">
+      <h3 class="section-title me-auto">Our Partners</h3>
+    </div>
+    <section class="section-partners">
+      
+      <div class="swiper mySwiper p-5">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="https://thecentre.ph/">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/centre-1.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="https://www.dict.gov.ph/">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/dict.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="https://www.dost.gov.ph/">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/dost-index.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="https://www.sosajbph.com/">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/pdat.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="https://adarna.com.ph/">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/ah.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="#">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/malacanang.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="#">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/rc.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="https://www.iacademy.edu.ph/">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/iacademy.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="partner-item">
+              <a href="https://www.dap.edu.ph/">
+                <div class="d-flex justify-content-center bg-light-1">
+                  <img class="partner-carousel-img" src="${static.url('images/partners/dap.png')}"/>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-button-next slideBtn"></div>
+        <div class="swiper-button-prev slideBtn"></div>
+        <div class="swiper-pagination slideBtn"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="contained-wrapper pt-6 pb-6">
+  <section class="section-blogs-container">
+    <div class="section-header d-flex align-items-center">
+      <h3 class="section-title me-auto">Latest Blogs</h3>
+    </div>
+    <div class="row mt-1 gutter-2rem blog-list">
+    </div>
+  </section>
+</div>
+
+<%include file="subscribe.html" />
 
   <!-- Messenger Chat Plugin Code -->
 <div id="fb-root"></div>
@@ -688,51 +859,53 @@ from openedx.core.djangolib.markup import HTML, Text
         $(".testimonial-slider").slick("slickPrev");
       });
 
-      var coursesDataState;
+    var coursesDataState;
 
-      // var fetchCoursesTags = function (data) {
-      //   $.ajax({
-      //     url: "https://discovery.coursebank.ph/api/v1/courses/",
-      //     success: function (data) {
-      //       let coursesData = data.results;
-      //       coursesDataState = data.results;
-      //       coursesData = coursesData.slice(0, 6)
-      //       coursesData.forEach((course) => {
-      //         console.log(course);
-      //         $('.courses-list-container').append(generateCoursesHtml(course));
-      //       });
-      //     },
-      //     error: function (xhr, status, error) {
-      //       console.log(error);
-      //     }
-      //   })
-      // }();
+    // var fetchCoursesTags = function (data) {
+    //   $.ajax({
+    //     url: "https://discovery.coursebank.ph/api/v1/courses/",
+    //     success: function (data) {
+    //       let coursesData = data.results;
+    //       coursesDataState = data.results;
+    //       coursesData = coursesData.slice(0, 6)
+    //       coursesData.forEach((course) => {
+    //         console.log(course);
+    //         $('.courses-list-container').append(generateCoursesHtml(course));
+    //       });
+    //     },
+    //     error: function (xhr, status, error) {
+    //       console.log(error);
+    //     }
+    //   })
+    // }();
 
-      var fetchPrograms = function (data) {
-        $.ajax({
-          url: "https://discovery.coursebank.ph/api/v1/programs/",
-          success: function (data) {
-            let programsData = data.results;
-            if (programsData.length > 3) {
-              programsData = programsData.slice(0, 3)
-            } else {
-              programsData = programsData;
-            }
-            programsData.forEach((course) => {
-              $('.specialization-program-list').append(generateSpecializationProgramsHtml(course));
-            });
-          },
-          error: function (xhr, status, error) {
-            console.log(error);
+    var fetchPrograms = (function (data) {
+      $.ajax({
+        url: "https://discovery.coursebank.ph/api/v1/programs/",
+        success: function (data) {
+          let programsData = data.results;
+          if (programsData.length > 3) {
+            programsData = programsData.slice(0, 3);
+          } else {
+            programsData = programsData;
           }
-        })
-      }();
-
-      $('.btn-filter-course').click(function () {
-        $('.btn-filter-course').removeClass('btn-primary');
-        $(this).addClass('btn-primary');
-        fetchCourseWithFilter($(this).attr('data-key'));
+          programsData.forEach((course) => {
+            $(".specialization-program-list").append(
+              generateSpecializationProgramsHtml(course)
+            );
+          });
+        },
+        error: function (xhr, status, error) {
+          console.log(error);
+        },
       });
+    })();
+
+    $(".btn-filter-course").click(function () {
+      $(".btn-filter-course").removeClass("btn-primary");
+      $(this).addClass("btn-primary");
+      fetchCourseWithFilter($(this).attr("data-key"));
+    });
 
       var fetchCourseWithFilter = function (filter) {
         // let testFilter = ["course-v1:Adarna+AD101+2019_T3", "course-v1:Coursebank+CB002.1+2021_Q1"];
@@ -801,15 +974,60 @@ from openedx.core.djangolib.markup import HTML, Text
           '</div>'
     };
 
-    var generateSpecializationProgramsHtml = function (data) {
+  var generateSpecializationProgramsHtml = function (data) {
+    return (
+      '<div class="col-12 col-md-6 col-lg-4">' +
+      '<a href="">' +
+      '<div class="specialization-bundle-item ">' +
+      '<img height="auto" width="100%" al="' +
+      data.title +
+      '" src="' +
+      data.card_image_url +
+      '" class="img-item" />' +
+      '<div class="specialization-bundle-details-container border-none">' +
+      "<h5>Information Technology</h5>" +
+      '<div class="d-flex align-items-center">' +
+      '<h2 class="item-title">' +
+      data.title +
+      "</h2>" +
+      "</div>" +
+      "</div>" +
+      "</div>" +
+      "</a>" +
+      "</div>"
+    );
+  };
+
+  var fetchBlogs = function (data) {
+      $.ajax({
+        url: "https://blog.coursebank.ph/wp-json/wp/v2/posts?per_page=3&order=desc",
+        success: function (data) {
+          let blogsData = data;
+
+          blogsData.forEach(async (blog) => {
+            let image = await $.ajax({
+              url: "https://blog.coursebank.ph/wp-json/wp/v2/media/" + blog.featured_media
+            })
+            $('.blog-list').append(generateBlogs(blog, image));
+          });
+        },
+        error: function (xhr, status, error) {
+          console.log(error);
+        }
+      })
+    }();
+
+    var generateBlogs = function (data, image) {
+
       return '<div class="col-12 col-md-6 col-lg-4">' +
-        '<a href="">' +
-        '<div class="specialization-bundle-item ">' +
-        '<img height="auto" width="100%" al="' + data.title + '" src="' + data.card_image_url + '" class="img-item" />' +
-        '<div class="specialization-bundle-details-container border-none">' +
-        '<h5>Information Technology</h5>' +
-        '<div class="d-flex align-items-center">' +
-        '<h2 class="item-title">' + data.title + '</h2>' +
+        '<a href="' + data.link + '">' +
+        '<div class="item-container">' +
+        '<img height="auto" width="100%" src="' + image.source_url + '" />' +
+        '<div class="details-container border-none">' +
+        '<div class="d-flex flex-column">' +
+        '<h2 class="item-title">' + data.title.rendered + '</h2>' +
+        '<p class="mt-2"></p>' +
+        '<a href="' + data.link + '" class="mt-1">Read More</a>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -817,28 +1035,52 @@ from openedx.core.djangolib.markup import HTML, Text
         '</div>';
     };
 
-    // $('#subscribe').click(function(e){
-    //   e.preventDefault();
-    //   $(this).html('<p><b>The subscription feature is currently unavaiable right now.</b></p>');
-    // });
+  // $('#subscribe').click(function(e){
+  //   e.preventDefault();
+  //   $(this).html('<p><b>The subscription feature is currently unavaiable right now.</b></p>');
+  // });
 
-    // programsData.forEach((course) => {
-    //   $('.specialization-program-list').append(generateSpecializationProgramsHtml(course));
-    // });
+  // programsData.forEach((course) => {
+  //   $('.specialization-program-list').append(generateSpecializationProgramsHtml(course));
+  // });
 
-    // const result = coursesData.filter(num => num.course_id == "course-v1:Coursebank+CB001+2020_Q1");
-    // console.log(result[0].primary_topic.name);
+  // const result = coursesData.filter(num => num.course_id == "course-v1:Coursebank+CB001+2020_Q1");
+  // console.log(result[0].primary_topic.name);
 
+  // $('.course-item-container').each(function (i, obj) {
+  //   let courseItemDetails = coursesData.filter(num => num.canonical_course_run_key == $(obj).attr('id'));
+  //   console.log(courseItemDetails[0]);
+  //   if(courseItemDetails[0] && courseItemDetails[0].topics &&  courseItemDetails[0].topics[0]){
+  //     // console.log(courseItemDetails[0].topics[0]);
+  //     let course_primary_topic = courseItemDetails[0].topics[0];
+  //     $(obj).find('.category-badge').text(course_primary_topic);
+  //   } else {
+  //     $(obj).find('.category-badge').remove();
+  //   }
+  // });
+</script><style>
+  .slideBtn{
+    color: #3aa8a1 !important;
+  }
+  .swiper-pagination-bullet-active{
+    background-color: #3aa8a1 !important;
+  }
+  @media (max-width: 768px) {
+    .swiper {
+      padding: 2rem; /* Adjust padding for smaller screens */
+    }
 
-    // $('.course-item-container').each(function (i, obj) {
-    //   let courseItemDetails = coursesData.filter(num => num.canonical_course_run_key == $(obj).attr('id'));
-    //   console.log(courseItemDetails[0]);
-    //   if(courseItemDetails[0] && courseItemDetails[0].topics &&  courseItemDetails[0].topics[0]){
-    //     // console.log(courseItemDetails[0].topics[0]);
-    //     let course_primary_topic = courseItemDetails[0].topics[0];
-    //     $(obj).find('.category-badge').text(course_primary_topic);
-    //   } else {
-    //     $(obj).find('.category-badge').remove();
-    //   }
-    // });
-  </script>
+    .swiper-slide {
+      text-align: center; /* Center align the content */
+    }
+
+    .partner-item {
+      margin: 0 auto; /* Add some horizontal spacing between partner items */
+    }
+
+    img.partner-carousel-img {
+      max-width: 100%; /* Make images responsive within their containers */
+      height: auto; /* Allow images to maintain their aspect ratio */
+    }
+  }
+</style>
