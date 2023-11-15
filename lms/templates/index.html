@@ -944,39 +944,40 @@ from openedx.core.djangolib.markup import HTML, Text %>
   var generateCoursesHtml = function (data) {
     let courseBadge = "";
     if (data && data.topics && data.topics[0]) {
-      courseBadge =
-        '<div class="category-badge" style="background-color: #387aa6">' +
-        data.topics[0] +
-        "</div>";
+        courseBadge = '<div class="category-badge" style="background-color: #387aa6">' + data.topics[0] + '</div>';
     }
-    return (
-      '<div id="' +
-      data.canonical_course_run_key +
-      '" class="col-12 col-md-6 col-lg-4 course-item-container">' +
-      '<a href="/courses/' +
-      data.canonical_course_run_key +
-      '">' +
-      '<div class="course-item">' +
-      courseBadge +
-      '<img height="auto" width="100%" src="' +
-      data.card_image_url +
-      '" alt="' +
-      data.title +
-      '">' +
-      '<div class="course-details-container">' +
-      '<div class="d-flex align-items-center">' +
-      // '<img class="me-1" height="auto" width="32px" src="/static/cb-custom./images/course-company-placeholder.a05c35868243.png">' +
-      '<h2 class="course-title">Coursebank</h2>' +
-      "</div>" +
-      '<p class="course-description mt-2 pb-3">' +
-      data.title +
-      "</p>" +
-      "</div>" +
-      "</div>" +
-      "</a>" +
-      "</div>"
-    );
+
+    const ownerKey = (data.owners && data.owners.length > 0) ? data.owners[0].key : '';
+    const startDate = (data.course_runs && data.course_runs.length > 0) ? data.course_runs[0].start : '';
+
+    const formatDate = (dateString) => {
+        if (!dateString) {
+          return 'To be announced';
+        }
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(dateString);
+        return new Intl.DateTimeFormat('en-US', options).format(date);
+    };
+
+    return '<div id="' + data.canonical_course_run_key + '" class="col-12 col-md-6 col-lg-4 course-item-container">' +
+        '<a href="/courses/' + data.canonical_course_run_key + '/about">' +
+        '<div class="course-item">' +
+        courseBadge +
+        '<img height="auto" width="100%" src="' + data.card_image_url + '" alt="' + data.title + '">' +
+        '<div class="course-details-container">' +
+        '<div class="d-flex align-items-center">' +
+        // '<img class="me-1" height="auto" width="32px" src="/static/cb-custom./images/course-company-placeholder.a05c35868243.png">' +
+        '<h2 class="course-title">' + ownerKey + '</h2>' +
+        '</div>' +
+        '<p class="course-description mt-2 pb-3">' + data.title + '</p>' +
+        '<div class="course-start">Class Starts:</div>' +
+        '<span class="course-start-date">' + formatDate(startDate) + '</span>' +
+        '</div>' +
+        '</div>' +
+        '</a>' +
+        '</div>'
   };
+
 
   var generateSpecializationProgramsHtml = function (data) {
     return (
