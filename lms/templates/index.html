@@ -772,6 +772,40 @@ from openedx.core.djangolib.markup import HTML, Text %>
   chatbox.setAttribute("page_id", "277222749567878");
   chatbox.setAttribute("attribution", "biz_inbox");
 </script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints:{
+      1440:{
+        spaceBetween: 20,
+        slidesPerView: 5,
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 10,
+      },
+      425: {
+        slidesPerView: 3,
+        spaceBetween: 10,
+      },
+      375:{
+        slidesPerView: 3,
+        spaceBetween: 3,
+      },
+    },
+  });
+</script>
 
 <!-- Your SDK code -->
 <script>
