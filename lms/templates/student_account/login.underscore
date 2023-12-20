@@ -17,8 +17,8 @@
         margin: 0 auto !important;
     }
     .btn-primary {
-        background: #3aa8a1 !important;
-        background-color: #3aa8a1 !important;
+        background: #D00822 !important;
+        background-color: #D00822 !important;
     }
     input[type=text] {
         height: 48px !important;
