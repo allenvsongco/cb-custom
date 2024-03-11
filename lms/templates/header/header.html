@@ -90,7 +90,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
           </li>
           % if user.is_authenticated:
             <li class="nav-item">
-              <a class="nav-link text-primary" href="#">Coursebank PLUS</a>
+              <a class="nav-link text-primary" href="{% url 'bundles_landing' %}">Coursebank PLUS</a>
             </li>
             <%include file="user_dropdown.html"/>
           % else:
