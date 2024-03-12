@@ -64,7 +64,7 @@ from six import string_types
         success: function(response) {
           // Handle success
           if (response === "") {
-            location.href = "{% url 'dashboard' %}";
+            location.href = "${reverse('dashboard') | n, js_escaped_string}";
           } else {
             location.href = response;
           }
