@@ -56,16 +56,15 @@ from six import string_types
     $(".register_special").click(function(event) {
       event.preventDefault();
 
-      // Make a POST request to the API to add enrollment
       $.ajax({
-        url: "https://tmtg-clone.click/enrollment/v1/enrollment/",  // Replace with your actual API endpoint
+        url: "https://tmtg-clone.click/enrollment/v1/enrollment/",
         method: "POST",
         data: JSON.stringify({ user: user.username, course_id: course.course_id, mode: "verified" }),
         contentType: "application/json",
         success: function(response) {
           // Handle success
           if (response === "") {
-            location.href = "${reverse('dashboard') | n, js_escaped_string}";
+            location.href = "{% url 'dashboard' %}";
           } else {
             location.href = response;
           }
@@ -134,7 +133,7 @@ from six import string_types
             </a>
           %endif
         %elif course_in_bundle:
-          <a href="{% url 'dashboard' %}" class="register_special">
+          <a href="" class="register_special">
           ${_("Enroll Now")} ${course_in_bundle}
           </a>
           <div id="register_error"></div>
