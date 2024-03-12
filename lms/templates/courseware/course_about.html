@@ -134,7 +134,7 @@ from six import string_types
             </a>
           %endif
         %elif course_in_bundle:
-          <a href="/dashboard" class="register_special">
+          <a href="{% url 'dashboard' %}" class="register_special">
           ${_("Enroll Now")} ${course_in_bundle}
           </a>
           <div id="register_error"></div>
