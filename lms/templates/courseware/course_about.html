@@ -105,7 +105,7 @@ from six import string_types
           %endif
         %elif course_in_bundle:
           <a> 
-            {{ course_in_bundle }}
+            course_in_bundle
           </a>
           <div id="register_error"></div>
         %else:
@@ -120,7 +120,7 @@ from six import string_types
               href_class = "register"
           %>
           <a href="${reg_href}" class="${href_class}">
-            ${_("Enroll Now")}
+            ${_("Enroll Now")} course_in_bundle
           </a>
           <div id="register_error"></div>
         %endif
