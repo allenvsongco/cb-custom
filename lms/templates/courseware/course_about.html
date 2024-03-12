@@ -104,8 +104,8 @@ from six import string_types
             </a>
           %endif
         %elif course_in_bundle:
-          <a> {% comment %} <a href="${reg_href}" class="${href_class}"> {% endcomment %}
-            {{ course_in_bundle }} {% comment %} ${_("Enroll Now")} {% endcomment %}
+          <a> 
+            {{ course_in_bundle }}
           </a>
           <div id="register_error"></div>
         %else:
