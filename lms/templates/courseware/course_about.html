@@ -57,32 +57,33 @@ from six import string_types
         console.log("Username: ", username);
         // Send a POST request to the API with the specified parameters
         $.ajax({
-            type: "POST",
-            url: "https://tmtg-clone.click/api/enrollment/v1/enrollment",
-            data: {
-                username: username,
-                course_id: course_id,
-                mode: "verified"
-            },
-            success: function(response) {
-                if (response === "") {
-                    location.href = "${reverse('dashboard') | n, js_escaped_string}";
-                } else {
-                    location.href = response;
-                }
-            },
-            error: function(xhr) {
-                if (xhr.status == 403) {
-                    $('#register_error_special').text(
-                        (xhr.responseText ? xhr.responseText : "${_("An error has occurred. Please ensure that you are logged in to enroll.") | n, js_escaped_string}")
-                    ).css("display", "block");
-                } else {
-                    $('#register_error_special').text(
-                        (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.") | n, js_escaped_string}")
-                    ).css("display", "block");
-                }
+        type: "POST",
+        url: "https://tmtg-clone.click/api/enrollment/v1/enrollment",
+        contentType: "application/json",
+        data: JSON.stringify({
+            username: username,
+            course_id: course_id,
+            mode: "verified"
+        }),
+        success: function(response) {
+            if (response === "") {
+                location.href = "${reverse('dashboard') | n, js_escaped_string}";
+            } else {
+                location.href = response;
             }
-        });
+        },
+        error: function(xhr) {
+            if (xhr.status == 403) {
+                $('#register_error_special').text(
+                    (xhr.responseText ? xhr.responseText : "${_("An error has occurred. Please ensure that you are logged in to enroll.") | n, js_escaped_string}")
+                ).css("display", "block");
+            } else {
+                $('#register_error_special').text(
+                    (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.") | n, js_escaped_string}")
+                ).css("display", "block");
+            }
+        }
+    });
 
         event.preventDefault();
     });
