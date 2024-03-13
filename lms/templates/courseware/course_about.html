@@ -59,8 +59,8 @@ from six import string_types
             type: "POST",
             url: "https://tmtg-clone.click/enrollment/v1/enrollment/",
             data: {
-                user: user.username,
-                course_id: course.course_id,
+                user: username,
+                course_id: course_id,
                 mode: "verified"
             },
             success: function(response) {
@@ -73,11 +73,11 @@ from six import string_types
             },
             error: function(xhr) {
                 if (xhr.status == 403) {
-                    $('#register_error').text(
+                    $('#register_error_special').text(
                         (xhr.responseText ? xhr.responseText : "${_("An error has occurred. Please ensure that you are logged in to enroll.") | n, js_escaped_string}")
                     ).css("display", "block");
                 } else {
-                    $('#register_error').text(
+                    $('#register_error_special').text(
                         (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.") | n, js_escaped_string}")
                     ).css("display", "block");
                 }
@@ -140,10 +140,10 @@ from six import string_types
             </a>
           %endif
         %elif course_in_bundle:
-          <a href="" class="register_special">
+          <a href="${course_target}" class="register_special">
           ${_("Enroll Now")} ${course_in_bundle}
           </a>
-          <div id="register_error"></div>
+          <div id="register_error_special"></div>
         %else:
           <%
             if ecommerce_checkout:
