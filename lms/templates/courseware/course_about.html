@@ -62,7 +62,9 @@ from six import string_types
         contentType: "application/json",
         data: JSON.stringify({
             username: username,
-            course_id: course_id,
+            course_details: {
+                course_id: course_id
+            },
             mode: "verified"
         }),
         success: function(response) {
