@@ -53,7 +53,8 @@ from six import string_types
     $(".register_special").click(function(event) {
         var course_id = "${course.id}";
         var username = "${request.user.username}";
-
+        console.log("Course ID: ", course_id);
+        console.log("Username: ", username);
         // Send a POST request to the API with the specified parameters
         $.ajax({
             type: "POST",
@@ -64,7 +65,6 @@ from six import string_types
                 mode: "verified"
             },
             success: function(response) {
-                // Assuming the response is a URL, you can redirect to it
                 if (response === "") {
                     location.href = "${reverse('dashboard') | n, js_escaped_string}";
                 } else {
