@@ -50,34 +50,36 @@ from six import string_types
       }
     });
 
-  })(this)
-
-  (function() {
     $(".register_special").click(function(event) {
+      $("#class_enroll_form_special").submit();
       event.preventDefault();
+    });
 
-      $.ajax({
-        url: "https://tmtg-clone.click/enrollment/v1/enrollment/",
-        method: "POST",
-        data: JSON.stringify({ user: user.username, course_id: course.course_id, mode: "verified" }),
-        contentType: "application/json",
-        success: function(response) {
-          // Handle success
-          if (response === "") {
-            location.href = "${reverse('dashboard') | n, js_escaped_string}";
-          } else {
-            location.href = response;
-          }
-        },
-        error: function(xhr) {
-          // Handle errors
-          if (xhr.status == 403) {
-            $('#register_error').text(xhr.responseText ? xhr.responseText : "An error has occurred. Please ensure that you are logged in to enroll.").css("display", "block");
-          } else {
-            $('#register_error').text(xhr.responseText ? xhr.responseText : "An error occurred. Please try again later.").css("display", "block");
-          }
+    $('#class_enroll_form_special').on('submit', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      url: "https://tmtg-clone.click/enrollment/v1/enrollment/",
+      method: "POST",
+      data: JSON.stringify({ user: user.username, course_id: course.course_id, mode: "verified" }),
+      contentType: "application/json",
+      success: function(response) {
+        // Handle success
+        if (response === "") {
+          location.href = "${reverse('dashboard') | n, js_escaped_string}";
+        } else {
+          location.href = response;
         }
-      });
+      },
+      error: function(xhr) {
+        // Handle errors
+        if (xhr.status == 403) {
+          $('#register_error').text(xhr.responseText ? xhr.responseText : "An error has occurred. Please ensure that you are logged in to enroll.").css("display", "block");
+        } else {
+          $('#register_error').text(xhr.responseText ? xhr.responseText : "An error occurred. Please try again later.").css("display", "block");
+        }
+      }
+    });
     });
   })(this)
   </script>
