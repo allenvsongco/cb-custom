@@ -51,35 +51,40 @@ from six import string_types
     });
 
     $(".register_special").click(function(event) {
-      $("#class_enroll_form_special").submit();
-      event.preventDefault();
-    });
+        var course_id = "${course.id}";
+        var username = "${request.user.username}";
 
-    $('#class_enroll_form_special').on('submit', function(event) {
-    event.preventDefault();
+        // Send a POST request to the API with the specified parameters
+        $.ajax({
+            type: "POST",
+            url: "https://tmtg-clone.click/enrollment/v1/enrollment/",
+            data: {
+                user: user.username,
+                course_id: course.course_id,
+                mode: "verified"
+            },
+            success: function(response) {
+                // Assuming the response is a URL, you can redirect to it
+                if (response === "") {
+                    location.href = "${reverse('dashboard') | n, js_escaped_string}";
+                } else {
+                    location.href = response;
+                }
+            },
+            error: function(xhr) {
+                if (xhr.status == 403) {
+                    $('#register_error').text(
+                        (xhr.responseText ? xhr.responseText : "${_("An error has occurred. Please ensure that you are logged in to enroll.") | n, js_escaped_string}")
+                    ).css("display", "block");
+                } else {
+                    $('#register_error').text(
+                        (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.") | n, js_escaped_string}")
+                    ).css("display", "block");
+                }
+            }
+        });
 
-    $.ajax({
-      url: "https://tmtg-clone.click/enrollment/v1/enrollment/",
-      method: "POST",
-      data: JSON.stringify({ user: user.username, course_id: course.course_id, mode: "verified" }),
-      contentType: "application/json",
-      success: function(response) {
-        // Handle success
-        if (response === "") {
-          location.href = "${reverse('dashboard') | n, js_escaped_string}";
-        } else {
-          location.href = response;
-        }
-      },
-      error: function(xhr) {
-        // Handle errors
-        if (xhr.status == 403) {
-          $('#register_error').text(xhr.responseText ? xhr.responseText : "An error has occurred. Please ensure that you are logged in to enroll.").css("display", "block");
-        } else {
-          $('#register_error').text(xhr.responseText ? xhr.responseText : "An error occurred. Please try again later.").css("display", "block");
-        }
-      }
-    });
+        event.preventDefault();
     });
   })(this)
   </script>
