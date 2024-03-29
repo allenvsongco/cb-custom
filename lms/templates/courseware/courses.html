@@ -575,5 +575,32 @@
                 '</div>' +
                 '</li>';
         }
+
+        
+            $('.courses-list-container').on('click', '.course-item-container', function (e) {
+            e.preventDefault();
+            var courseId = $(this).attr('id');
+            
+            // Make AJAX call to check if courseId exists in the API response
+            $.ajax({
+                url: "https://tmtg-clone.click/api/cb/bundles/",
+                data: { course_id: courseId },
+                success: function (response) {
+                    if (response.count > 0) {
+                        // If courseId exists, redirect to the corresponding coursebank bundle
+                        var bundleSlug = response.results[0].slug;
+                        window.location.href = "https://tmtg-clone.click/coursebank-bundles/" + bundleSlug + "/";
+                    } else {
+                        // Handle the case when courseId doesn't exist in the API response
+                        console.log("Course ID not found in bundles.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error checking course ID:", error);
+                }
+            });
+        });
+
     });
+
 </script>
