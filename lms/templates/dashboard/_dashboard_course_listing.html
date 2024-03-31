@@ -89,9 +89,7 @@ from lms.djangoapps.experiments.utils import UPSELL_TRACKING_FLAG
       response = requests.get(api_url)
       if response.status_code == 200:
           print("!!!!!!!!!!!!!!!!!!",response.text)
-          
-      else:
-        print("!!!!!!!!!!!!!!!!!!",response.text)
+          print(course_id)
       return None
 
   # Check if course overview ID exists in API response and get the slug
