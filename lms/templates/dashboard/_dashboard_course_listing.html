@@ -89,11 +89,7 @@ from lms.djangoapps.experiments.utils import UPSELL_TRACKING_FLAG
       response = requests.get(api_url)
       if response.status_code == 200:
           print("!!!!!!!!!!!!!!!!!!",response.text)
-          {% comment %} bundles = response.json()
-          for bundle in bundles:
-              short_description = bundle.get("short_description", "")
-              if short_description and str(course_id) in short_description:
-                  return bundle.get("slug") {% endcomment %}
+          
       else:
         print("!!!!!!!!!!!!!!!!!!",response.text)
       return None
