@@ -90,15 +90,18 @@ from lms.djangoapps.experiments.utils import UPSELL_TRACKING_FLAG
       if response.status_code == 200:
           print("!!!!!!!!!!!!!!!!!!",response.text)
           print(course_id)
+          bundles = response.json().get("results", [])
+          for bundle in bundles:
+            short_description = bundle.get("short_description", "")
+            if short_description and str(course_id) in short_description:
+                return bundle.get("slug")
       return None
 
   # Check if course overview ID exists in API response and get the slug
   slug = check_course_in_api(course_overview.id)
   if slug:
-      # Redirect to coursebank-bundles with slug
       course_target = f"https://tmtg-clone.click/coursebank-bundles/{slug}/"
   else:
-      # Keep the original course_home_url
       course_target = course_home_url(course_overview.id)
   %>
   <section class="details" aria-labelledby="details-heading-${enrollment.course_id}">
