@@ -88,12 +88,14 @@ from lms.djangoapps.experiments.utils import UPSELL_TRACKING_FLAG
       api_url = "https://tmtg-clone.click/api/cb/bundles/"
       response = requests.get(api_url)
       if response.status_code == 200:
-          print(response)
+          print("!!!!!!!!!!!!!!!!!!",response.text)
           {% comment %} bundles = response.json()
           for bundle in bundles:
               short_description = bundle.get("short_description", "")
               if short_description and str(course_id) in short_description:
                   return bundle.get("slug") {% endcomment %}
+      else:
+        print("!!!!!!!!!!!!!!!!!!",response.text)
       return None
 
   # Check if course overview ID exists in API response and get the slug
