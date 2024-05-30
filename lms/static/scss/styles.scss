@@ -2,8 +2,8 @@ html {
   // overflow-x: hidden;
 }
 // @import "components/_fonts";
-$primary: #3aa8a1;
-$secondary: #81a74b;
+$primary: #D00822;
+$secondary: #FFD30E;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "pages/homepage.scss";
@@ -15,7 +15,7 @@ $secondary: #81a74b;
   background-color: #303030;
 }
 .bg-cta-gradient {
-  background: linear-gradient(90deg, #387aa6 0%, #3aa8a1 49.48%, #c1cd5e 100%);
+  background: linear-gradient(90deg, #387aa6 0%, #D00822 49.48%, #c1cd5e 100%);
   background-repeat: no-repeat;
   background-position: top right;
 }
@@ -106,9 +106,9 @@ $max-width: 1400px;
   }
   .dropdown {
     padding: 8px 25px 8px 25px;
-    border: 1px solid #3aa8a1;
+    border: 1px solid #D00822;
     border-radius: 4px;
-    color: #3aa8a1;
+    color: #D00822;
   }
   @include media-breakpoint-down(lg) {
     .navbar-brand {
@@ -232,7 +232,7 @@ $max-width: 1400px;
       color: #021b30;
     }
     .active {
-      color: #3aa8a1;
+      color: #D00822;
     }
   }
 }
